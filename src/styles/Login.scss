@@ -1,0 +1,59 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #212121;
+}
+
+.login-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 300px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #007bff;
+  margin-bottom: 30px;
+}
+
+.login-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.kakao-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffeb00;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f7df00;
+  }
+
+  img {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+}
