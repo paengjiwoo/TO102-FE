@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "@tanstack/react-router";
+import { useRouter, Outlet, createRootRoute } from "@tanstack/react-router";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 
@@ -17,10 +17,15 @@ function Layout({ children }: LayoutProps) {
   return (
     <>
       {shouldShowHeaderFooter && <Header />}
-      {children}
+      <Outlet />
       {shouldShowHeaderFooter && <Footer />}
     </>
   );
 }
 
 export default Layout;
+
+export const Route = createRootRoute({
+  component: Layout,
+  notFoundComponent: Error
+})

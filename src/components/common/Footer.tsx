@@ -8,19 +8,19 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <nav className="footer__nav">
-        <Link to="./map" className="footer__link">
+        <Link to="/" className="footer__link">
           <img src={mapIcon} alt="지도 찾기" className="footer__icon" />
           <span className="footer__text">지도 찾기</span>
         </Link>
-        <Link to="./news" className="footer__link">
+        <Link to="/news" className="footer__link">
           <img src={homeIcon} alt="토백이 소식" className="footer__icon" />
           <span className="footer__text">토백이 소식</span>
         </Link>
-        <Link to="./chat" className="footer__link">
+        <Link to="/chat" className="footer__link">
           <img src={chatIcon} alt="채팅" className="footer__icon" />
           <span className="footer__text">채팅</span>
         </Link>
-        <Link to="./profile" className="footer__link">
+        <Link to="/profile" className="footer__link">
           <img src={profileIcon} alt="내 정보" className="footer__icon" />
           <span className="footer__text">내 정보</span>
         </Link>

@@ -13,7 +13,7 @@ const Error: React.FC<ErrorComponentProps> = ({ error }) => {
         margin: "20px 0",
       }}
     >
-      <strong>Error:</strong> {error.message || "An unexpected error occurred"}
+      <strong>Error: </strong> {error.message || "An unexpected error occurred"}
     </div>
   );
 };

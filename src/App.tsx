@@ -8,41 +8,23 @@ import {
   Route,
 } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./routes";
+import Login from "./routes/login";
 import Error from "./components/common/Error";
-import Layout from "./layout/layout";
+import Layout from "./routes/__root";
 import { ToHundredThemeProvider } from "./context/themeContext";
 import "./styles/global.scss";
 
-const queryClient = new QueryClient();
+import { routeTree } from './routeTree.gen';
+const router = createRouter({ routeTree })
 
-const rootRoute: RootRoute = createRootRoute({
-  component: Layout,
-  errorComponent: Error,
-});
-
-const homeRoute: any = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/",
-  component: Home,
-});
-
-const loginRoute: any = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/login",
-  component: Login,
-});
-
-const router: any = createRouter({
-  routeTree: rootRoute.addChildren([homeRoute, loginRoute]),
-});
-
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface Register {
-    router: any;
+    router: typeof router
   }
 }
+
+const queryClient = new QueryClient();
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 import React from "react";
-import "./styles/Login.scss";
+import "../styles/Login.scss";
 import { kakaoIcon, loginImg } from "../assets/icons";
+import { createFileRoute } from "@tanstack/react-router";
 
 const Login: React.FC = () => {
   const handleKakaoLogin = () => {
@@ -25,3 +26,7 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
+export const Route = createFileRoute('/login')({
+  component: Login,
+})
