@@ -18,7 +18,7 @@ const Login: React.FC = () => {
         <img src={loginImg} alt="login" className="login-image" />
         <button className="kakao-button" onClick={handleKakaoLogin}>
           <img src={kakaoIcon} alt="Kakao icon" />
-          카카오로 로그인하기
+          카카오로 로그인하기 login
         </button>
       </div>
     </div>
