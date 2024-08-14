@@ -27,6 +27,6 @@ const Login: React.FC = () => {
 
 export default Login;
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute("/login")({
   component: Login,
-})
+});
