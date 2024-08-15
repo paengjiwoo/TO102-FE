@@ -17,7 +17,7 @@ import { Route as NewsImport } from './routes/news'
 import { Route as LoginImport } from './routes/login'
 import { Route as ChatImport } from './routes/chat'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProfileprofileIdImport } from './routes/profile/$userId'
+import { Route as ProfileUserIdImport } from './routes/profile/$userId'
 
 // Create/Update Routes
 
@@ -51,8 +51,8 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ProfileprofileIdRoute = ProfileprofileIdImport.update({
-  path: '/profile/${profileId}',
+const ProfileUserIdRoute = ProfileUserIdImport.update({
+  path: '/profile/$userId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -102,11 +102,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupImport
       parentRoute: typeof rootRoute
     }
-    '/profile/${profileId}': {
-      id: '/profile/${profileId}'
-      path: '/profile/${profileId}'
-      fullPath: '/profile/${profileId}'
-      preLoaderRoute: typeof ProfileprofileIdImport
+    '/profile/$userId': {
+      id: '/profile/$userId'
+      path: '/profile/$userId'
+      fullPath: '/profile/$userId'
+      preLoaderRoute: typeof ProfileUserIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -121,7 +121,7 @@ export const routeTree = rootRoute.addChildren({
   NewsRoute,
   ReviewpageRoute,
   SignupRoute,
-  ProfileprofileIdRoute,
+  ProfileUserIdRoute,
 })
 
 /* prettier-ignore-end */
@@ -138,7 +138,7 @@ export const routeTree = rootRoute.addChildren({
         "/news",
         "/reviewpage",
         "/signup",
-        "/profile/${profileId}"
+        "/profile/$userId"
       ]
     },
     "/": {
@@ -159,8 +159,8 @@ export const routeTree = rootRoute.addChildren({
     "/signup": {
       "filePath": "signup.tsx"
     },
-    "/profile/${profileId}": {
-      "filePath": "profile/${profileId}.tsx"
+    "/profile/$userId": {
+      "filePath": "profile/$userId.tsx"
     }
   }
 }
