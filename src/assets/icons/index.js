@@ -4,3 +4,4 @@ export { default as mapIcon } from "./mapIcon.svg";
 export { default as profileIcon } from "./profileIcon.svg";
 export { default as loginImg } from "./loginImg.svg";
 export { default as kakaoIcon } from "./kakaoIcon.svg";
+export { default as kakaoButton } from "./kakaoButton.svg";
