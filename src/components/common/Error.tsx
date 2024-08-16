@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useRouterState, type NotFoundRouteProps } from "@tanstack/react-router";
 
 const Error: FC<NotFoundRouteProps> = (_props) => {

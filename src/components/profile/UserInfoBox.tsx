@@ -1,4 +1,3 @@
-import React from 'react';
 import { TUser } from '../../models/user.model';
 import { IoLocationOutline } from 'react-icons/io5';
 

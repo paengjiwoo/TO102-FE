@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, createFileRoute, useMatch, useRouter } from "@tanstack/react-router";
+import {  createFileRoute } from "@tanstack/react-router";
 import { useProfileData } from "../../hooks/profileHook";
 import UserInfoBox from "../../components/profile/UserInfoBox";
 import { IoStar } from "react-icons/io5";
 
 const Profile: React.FC = () => {
-  const { params: { userId },} = useMatch({ from: '/profile/$userId' });
+  // const { params: { userId },} = useMatch({ from: '/profile/$userId' });
 
   const { user } = useProfileData(); 
 

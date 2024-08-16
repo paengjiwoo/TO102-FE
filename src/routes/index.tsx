@@ -1,7 +1,5 @@
 import React from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
+import { createFileRoute } from "@tanstack/react-router";
 
 const Home: React.FC = () => {
   return <div>Home</div>;
