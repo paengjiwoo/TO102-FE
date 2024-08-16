@@ -13,11 +13,11 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
 import { Route as ReviewpageImport } from './routes/reviewpage'
-import { Route as ProfileImport } from './routes/profile'
 import { Route as NewsImport } from './routes/news'
 import { Route as LoginImport } from './routes/login'
 import { Route as ChatImport } from './routes/chat'
 import { Route as IndexImport } from './routes/index'
+import { Route as ProfileUserIdImport } from './routes/profile/$userId'
 
 // Create/Update Routes
 
@@ -28,11 +28,6 @@ const SignupRoute = SignupImport.update({
 
 const ReviewpageRoute = ReviewpageImport.update({
   path: '/reviewpage',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProfileRoute = ProfileImport.update({
-  path: '/profile',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +48,11 @@ const ChatRoute = ChatImport.update({
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProfileUserIdRoute = ProfileUserIdImport.update({
+  path: '/profile/$userId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,13 +88,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsImport
       parentRoute: typeof rootRoute
     }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileImport
-      parentRoute: typeof rootRoute
-    }
     '/reviewpage': {
       id: '/reviewpage'
       path: '/reviewpage'
@@ -109,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupImport
       parentRoute: typeof rootRoute
     }
+    '/profile/$userId': {
+      id: '/profile/$userId'
+      path: '/profile/$userId'
+      fullPath: '/profile/$userId'
+      preLoaderRoute: typeof ProfileUserIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -119,9 +119,9 @@ export const routeTree = rootRoute.addChildren({
   ChatRoute,
   LoginRoute,
   NewsRoute,
-  ProfileRoute,
   ReviewpageRoute,
   SignupRoute,
+  ProfileUserIdRoute,
 })
 
 /* prettier-ignore-end */
@@ -136,9 +136,9 @@ export const routeTree = rootRoute.addChildren({
         "/chat",
         "/login",
         "/news",
-        "/profile",
         "/reviewpage",
-        "/signup"
+        "/signup",
+        "/profile/$userId"
       ]
     },
     "/": {
@@ -153,14 +153,14 @@ export const routeTree = rootRoute.addChildren({
     "/news": {
       "filePath": "news.tsx"
     },
-    "/profile": {
-      "filePath": "profile.tsx"
-    },
     "/reviewpage": {
       "filePath": "reviewpage.tsx"
     },
     "/signup": {
       "filePath": "signup.tsx"
+    },
+    "/profile/$userId": {
+      "filePath": "profile/$userId.tsx"
     }
   }
 }
