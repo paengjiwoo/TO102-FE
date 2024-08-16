@@ -1,7 +1,9 @@
-import React from "react";
-import { ErrorComponentProps } from "@tanstack/react-router";
+import React, { FC } from "react";
+import { useRouterState, type NotFoundRouteProps } from "@tanstack/react-router";
 
-const Error: React.FC<ErrorComponentProps> = ({ error }) => {
+const Error: FC<NotFoundRouteProps> = (_props) => {
+  const state = useRouterState();
+
   return (
     <div
       style={{
@@ -13,7 +15,9 @@ const Error: React.FC<ErrorComponentProps> = ({ error }) => {
         margin: "20px 0",
       }}
     >
-      <strong>Error: </strong> {error.message || "An unexpected error occurred"}
+        <div>
+            <i>Warning:</i> Simulated route not found for path <code>{state.location.href}</code>
+        </div>
     </div>
   );
 };

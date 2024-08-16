@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter, Outlet, createRootRoute } from "@tanstack/react-router";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
+import Error from "../components/common/Error";
 
 interface LayoutProps {
   children: React.ReactNode;

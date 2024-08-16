@@ -5,7 +5,7 @@ import UserInfoBox from "../../components/profile/UserInfoBox";
 import { IoStar } from "react-icons/io5";
 
 const Profile: React.FC = () => {
-  const { params: { userId },} = useMatch('/profile/userId');
+  const { params: { userId },} = useMatch({ from: '/profile/$userId' });
 
   const { user } = useProfileData(); 
 
