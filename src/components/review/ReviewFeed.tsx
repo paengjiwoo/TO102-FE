@@ -4,7 +4,7 @@ import WrittenReview from './WrittenReview';
 const ReviewFeed = () => {
   return(
     <>
-      <div>ReviewFeed</div>
+      <div></div>
 
       <ReceivedReview />
       <WrittenReview />

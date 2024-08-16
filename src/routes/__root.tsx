@@ -13,7 +13,9 @@ function Layout() {
   return (
     <>
       {shouldShowHeaderFooter && <Header />}
-      <Outlet />
+      <div style={{ padding: '0px 25px'}}>
+        <Outlet />
+      </div>
       {shouldShowHeaderFooter && <Footer />}
     </>
   );
