@@ -18,7 +18,11 @@ const Profile: React.FC = () => {
           <IoStar />
           <div>{user.average_rating}</div>
         </div>
+      </div>
 
+      <div>
+        <div>받은 후기</div>
+        
       </div>
     </div>
   );
