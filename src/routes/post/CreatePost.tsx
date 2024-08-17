@@ -6,6 +6,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import pictureImg from "../../assets/icons/pictureImg.svg";
 import tagImg from "../../assets/icons/tagImg.svg";
 
+const createPost = async (postData: any) => {
+  const response = await fetch("/api/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  });
+  const result = await response.json();
+  return result.id;
+};
+
 const categories = ["동행", "맛집", "가이드"] as const;
 
 type Category = (typeof categories)[number];
@@ -35,16 +47,27 @@ const CreatePost: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
-      title,
-      date,
-      content,
-      categories: selectedCategories,
-      location,
-      images,
-    });
+
+    const confirmed = window.confirm("작성 완료하겠습니까?");
+    if (confirmed) {
+      // 게시글 데이터
+      const postData = {
+        title,
+        date,
+        content,
+        categories: selectedCategories,
+        location,
+        images,
+      };
+
+      // 게시글 생성 후 ID를 받아옴
+      const postId = await createPost(postData);
+
+      // 생성된 게시글 상세 페이지로 이동
+      navigate({ to: `/post/${postId}` });
+    }
   };
 
   const handleClose = () => {
