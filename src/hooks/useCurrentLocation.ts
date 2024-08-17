@@ -7,7 +7,7 @@ const useCurrentLocation = () => {
   useEffect(() => {
     const fetchLocation = async (latitude: number, longitude: number) => {
       try {
-        const API_KEY = "AIzaSyC4T-bNdHrac79OPyhq6oGnPBsNEGnP2z0"; // 여기에 API 키를 넣으세요
+        const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY; // 여기에 API 키를 넣으세요
         const response = await axios.get(
           `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`
         );
