@@ -5,7 +5,7 @@ import '../../styles/Header.scss'
 const routeName = [
   ['profile', '프로필'],
   ['chat', '채팅'],
-  ['review', '후가']
+  ['reviews', '후가']
 ]
 
 const Header: React.FC = () => {

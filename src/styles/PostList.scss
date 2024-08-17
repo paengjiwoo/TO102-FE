@@ -1,0 +1,109 @@
+.post-list-container {
+  padding: 20px;
+}
+
+.location-header {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-select {
+  margin-bottom: 20px;
+  border-top: 1px solid #7a7a7a;
+  border-bottom: 1px solid #7a7a7a;
+  padding: 10px 0;
+
+  button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &.selected {
+      background-color: #1da895;
+      color: white;
+    }
+  }
+}
+
+.posts {
+  .post-card {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .post-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .post-content {
+      padding: 10px;
+      flex: 1;
+
+      .post-category-date {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        color: #999;
+      }
+
+      h3 {
+        margin: 10px 0;
+        font-size: 1.2rem;
+      }
+
+      .post-location {
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      .post-status {
+        button {
+          padding: 5px 10px;
+          border: none;
+          border-radius: 5px;
+
+          &.progress {
+            background-color: #4caf50;
+            color: white;
+          }
+
+          &.completed {
+            background-color: #ddd;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.create-post-button {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  background-color: #147d70;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.create-post-button .plus {
+  bottom: 5px;
+}

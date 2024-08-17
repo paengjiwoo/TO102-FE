@@ -8,12 +8,16 @@ function Layout() {
 
   const currentPath = router.state.location.pathname;
 
-  const shouldShowHeaderFooter = !currentPath.includes("/login");
+  const shouldShowHeaderFooter = !(
+    currentPath.includes("/login") || currentPath.includes("/post/CreatePost")
+  );
 
   return (
     <>
       {shouldShowHeaderFooter && <Header />}
-      <Outlet />
+      <div style={{ padding: '0px 25px'}}>
+        <Outlet />
+      </div>
       {shouldShowHeaderFooter && <Footer />}
     </>
   );
@@ -23,5 +27,5 @@ export default Layout;
 
 export const Route = createRootRoute({
   component: Layout,
-  notFoundComponent: Error
-})
+  notFoundComponent: Error,
+});

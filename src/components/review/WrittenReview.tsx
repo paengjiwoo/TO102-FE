@@ -1,6 +1,6 @@
 const MyReview = () => {
   return(
-    <div>MyReview</div>
+    <div></div>
   );
 }
 

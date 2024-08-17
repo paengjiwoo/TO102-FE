@@ -11,28 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as SignupImport } from './routes/signup'
-import { Route as ReviewpageImport } from './routes/reviewpage'
-import { Route as NewsImport } from './routes/news'
+import { Route as ReviewsImport } from './routes/reviews'
 import { Route as LoginImport } from './routes/login'
 import { Route as ChatImport } from './routes/chat'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProfileUserIdImport } from './routes/profile/$userId'
+import { Route as PostPostlistImport } from './routes/post/postlist'
+import { Route as PostCreatePostImport } from './routes/post/CreatePost'
 
 // Create/Update Routes
 
-const SignupRoute = SignupImport.update({
-  path: '/signup',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ReviewpageRoute = ReviewpageImport.update({
-  path: '/reviewpage',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const NewsRoute = NewsImport.update({
-  path: '/news',
+const ReviewsRoute = ReviewsImport.update({
+  path: '/reviews',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +43,16 @@ const IndexRoute = IndexImport.update({
 
 const ProfileUserIdRoute = ProfileUserIdImport.update({
   path: '/profile/$userId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostPostlistRoute = PostPostlistImport.update({
+  path: '/post/postlist',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostCreatePostRoute = PostCreatePostImport.update({
+  path: '/post/CreatePost',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,25 +81,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsImport
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsImport
       parentRoute: typeof rootRoute
     }
-    '/reviewpage': {
-      id: '/reviewpage'
-      path: '/reviewpage'
-      fullPath: '/reviewpage'
-      preLoaderRoute: typeof ReviewpageImport
+    '/post/CreatePost': {
+      id: '/post/CreatePost'
+      path: '/post/CreatePost'
+      fullPath: '/post/CreatePost'
+      preLoaderRoute: typeof PostCreatePostImport
       parentRoute: typeof rootRoute
     }
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupImport
+    '/post/postlist': {
+      id: '/post/postlist'
+      path: '/post/postlist'
+      fullPath: '/post/postlist'
+      preLoaderRoute: typeof PostPostlistImport
       parentRoute: typeof rootRoute
     }
     '/profile/$userId': {
@@ -118,9 +118,9 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   ChatRoute,
   LoginRoute,
-  NewsRoute,
-  ReviewpageRoute,
-  SignupRoute,
+  ReviewsRoute,
+  PostCreatePostRoute,
+  PostPostlistRoute,
   ProfileUserIdRoute,
 })
 
@@ -135,9 +135,9 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/chat",
         "/login",
-        "/news",
-        "/reviewpage",
-        "/signup",
+        "/reviews",
+        "/post/CreatePost",
+        "/post/postlist",
         "/profile/$userId"
       ]
     },
@@ -150,14 +150,14 @@ export const routeTree = rootRoute.addChildren({
     "/login": {
       "filePath": "login.tsx"
     },
-    "/news": {
-      "filePath": "news.tsx"
+    "/reviews": {
+      "filePath": "reviews.tsx"
     },
-    "/reviewpage": {
-      "filePath": "reviewpage.tsx"
+    "/post/CreatePost": {
+      "filePath": "post/CreatePost.tsx"
     },
-    "/signup": {
-      "filePath": "signup.tsx"
+    "/post/postlist": {
+      "filePath": "post/postlist.tsx"
     },
     "/profile/$userId": {
       "filePath": "profile/$userId.tsx"

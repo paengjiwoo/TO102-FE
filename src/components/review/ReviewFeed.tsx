@@ -1,14 +1,17 @@
+import { useReviews } from '../../hooks/ReviewHook';
 import ReceivedReview from './ReceivedReview';
 import WrittenReview from './WrittenReview';
 
 const ReviewFeed = () => {
-  return(
-    <>
-      <div>ReviewFeed</div>
+  const { reviews } = useReviews();
 
-      <ReceivedReview />
+  return(
+    <div>
+      {reviews.length && reviews.map(review => 
+        (<ReceivedReview key={review.id} review={review}/>)
+      )}
       <WrittenReview />
-    </>
+    </div>
   );
 }
 
