@@ -11,23 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ReviewpageImport } from './routes/reviewpage'
-import { Route as ProfileImport } from './routes/profile'
+import { Route as ReviewsImport } from './routes/reviews'
 import { Route as LoginImport } from './routes/login'
 import { Route as ChatImport } from './routes/chat'
 import { Route as IndexImport } from './routes/index'
+import { Route as ProfileUserIdImport } from './routes/profile/$userId'
 import { Route as PostPostlistImport } from './routes/post/postlist'
 import { Route as PostCreatePostImport } from './routes/post/CreatePost'
 
 // Create/Update Routes
 
-const ReviewpageRoute = ReviewpageImport.update({
-  path: '/reviewpage',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProfileRoute = ProfileImport.update({
-  path: '/profile',
+const ReviewsRoute = ReviewsImport.update({
+  path: '/reviews',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -91,19 +86,6 @@ declare module '@tanstack/react-router' {
       path: '/reviews'
       fullPath: '/reviews'
       preLoaderRoute: typeof ReviewsImport
-    },
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileImport
-      parentRoute: typeof rootRoute
-    }
-    '/reviewpage': {
-      id: '/reviewpage'
-      path: '/reviewpage'
-      fullPath: '/reviewpage'
-      preLoaderRoute: typeof ReviewpageImport
       parentRoute: typeof rootRoute
     }
     '/post/CreatePost': {
@@ -137,10 +119,9 @@ export const routeTree = rootRoute.addChildren({
   ChatRoute,
   LoginRoute,
   ReviewsRoute,
-  ProfileUserIdRoute,
-  ProfileRoute,
   PostCreatePostRoute,
   PostPostlistRoute,
+  ProfileUserIdRoute,
 })
 
 /* prettier-ignore-end */
@@ -155,10 +136,9 @@ export const routeTree = rootRoute.addChildren({
         "/chat",
         "/login",
         "/reviews",
-        "/profile/$userId"
-        "/profile",
         "/post/CreatePost",
-        "/post/postlist"
+        "/post/postlist",
+        "/profile/$userId"
       ]
     },
     "/": {
@@ -173,16 +153,14 @@ export const routeTree = rootRoute.addChildren({
     "/reviews": {
       "filePath": "reviews.tsx"
     },
-    "/profile/$userId": {
-      "filePath": "profile/$userId.tsx"
-    "/profile": {
-      "filePath": "profile.tsx"
-    },
     "/post/CreatePost": {
       "filePath": "post/CreatePost.tsx"
     },
     "/post/postlist": {
       "filePath": "post/postlist.tsx"
+    },
+    "/profile/$userId": {
+      "filePath": "profile/$userId.tsx"
     }
   }
 }
