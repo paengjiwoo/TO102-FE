@@ -1,5 +1,5 @@
 import { useRouter } from "@tanstack/react-router";
-import React, { useEffect } from "react";
+import React from "react";
 import '../../styles/Header.scss'
 
 const routeName = [
