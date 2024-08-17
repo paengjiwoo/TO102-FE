@@ -11,28 +11,23 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as SignupImport } from './routes/signup'
-import { Route as ReviewsImport } from './routes/reviews'
-import { Route as NewsImport } from './routes/news'
+import { Route as ReviewpageImport } from './routes/reviewpage'
+import { Route as ProfileImport } from './routes/profile'
 import { Route as LoginImport } from './routes/login'
 import { Route as ChatImport } from './routes/chat'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProfileUserIdImport } from './routes/profile/$userId'
+import { Route as PostPostlistImport } from './routes/post/postlist'
+import { Route as PostCreatePostImport } from './routes/post/CreatePost'
 
 // Create/Update Routes
 
-const SignupRoute = SignupImport.update({
-  path: '/signup',
+const ReviewpageRoute = ReviewpageImport.update({
+  path: '/reviewpage',
   getParentRoute: () => rootRoute,
 } as any)
 
-const ReviewsRoute = ReviewsImport.update({
-  path: '/reviews',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const NewsRoute = NewsImport.update({
-  path: '/news',
+const ProfileRoute = ProfileImport.update({
+  path: '/profile',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +48,16 @@ const IndexRoute = IndexImport.update({
 
 const ProfileUserIdRoute = ProfileUserIdImport.update({
   path: '/profile/$userId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostPostlistRoute = PostPostlistImport.update({
+  path: '/post/postlist',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostCreatePostRoute = PostCreatePostImport.update({
+  path: '/post/CreatePost',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,25 +86,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsImport
-      parentRoute: typeof rootRoute
-    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
       fullPath: '/reviews'
       preLoaderRoute: typeof ReviewsImport
+    },
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileImport
       parentRoute: typeof rootRoute
     }
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupImport
+    '/reviewpage': {
+      id: '/reviewpage'
+      path: '/reviewpage'
+      fullPath: '/reviewpage'
+      preLoaderRoute: typeof ReviewpageImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/CreatePost': {
+      id: '/post/CreatePost'
+      path: '/post/CreatePost'
+      fullPath: '/post/CreatePost'
+      preLoaderRoute: typeof PostCreatePostImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/postlist': {
+      id: '/post/postlist'
+      path: '/post/postlist'
+      fullPath: '/post/postlist'
+      preLoaderRoute: typeof PostPostlistImport
       parentRoute: typeof rootRoute
     }
     '/profile/$userId': {
@@ -118,10 +136,11 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   ChatRoute,
   LoginRoute,
-  NewsRoute,
   ReviewsRoute,
-  SignupRoute,
   ProfileUserIdRoute,
+  ProfileRoute,
+  PostCreatePostRoute,
+  PostPostlistRoute,
 })
 
 /* prettier-ignore-end */
@@ -135,10 +154,11 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/chat",
         "/login",
-        "/news",
         "/reviews",
-        "/signup",
         "/profile/$userId"
+        "/profile",
+        "/post/CreatePost",
+        "/post/postlist"
       ]
     },
     "/": {
@@ -150,17 +170,19 @@ export const routeTree = rootRoute.addChildren({
     "/login": {
       "filePath": "login.tsx"
     },
-    "/news": {
-      "filePath": "news.tsx"
-    },
     "/reviews": {
       "filePath": "reviews.tsx"
     },
-    "/signup": {
-      "filePath": "signup.tsx"
-    },
     "/profile/$userId": {
       "filePath": "profile/$userId.tsx"
+    "/profile": {
+      "filePath": "profile.tsx"
+    },
+    "/post/CreatePost": {
+      "filePath": "post/CreatePost.tsx"
+    },
+    "/post/postlist": {
+      "filePath": "post/postlist.tsx"
     }
   }
 }

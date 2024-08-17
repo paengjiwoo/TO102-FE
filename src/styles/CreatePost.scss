@@ -1,0 +1,233 @@
+.create-post-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: none;
+  position: relative;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .close-button {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 20px;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  .select-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
+
+    .image-upload-group,
+    .tag-select-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d9d9d9;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      color: #d9d9d9;
+      padding: 10px;
+      width: 45%;
+      height: 120px;
+
+      .image-upload-label,
+      .tag-select-group-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+
+        img {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
+        }
+
+        span {
+          font-size: 1.2rem;
+          color: #b0b0b0;
+        }
+      }
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  textarea {
+    resize: none;
+    height: 150px;
+    font-size: 0.9rem;
+    color: #999;
+  }
+
+  .location-wrapper,
+  .location-input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+
+    span {
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .location-check-button {
+      padding: 5px 10px;
+      background-color: #68927a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-left: 10px;
+
+      &:hover {
+        background-color: #587a6a;
+      }
+    }
+  }
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #a5d6a7;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: #81c784;
+  }
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  &:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+}
+
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+
+  .sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .category-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border: none;
+
+    button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+
+      &.selected {
+        background-color: #147d70;
+        color: white;
+      }
+    }
+  }
+}

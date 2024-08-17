@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <img src={mapIcon} alt="지도 찾기" className="footer__icon" />
           <span className="footer__text">지도 찾기</span>
         </Link>
-        <Link to="/news" className="footer__link">
+        <Link to="/post/postlist" className="footer__link">
           <img src={homeIcon} alt="토백이 소식" className="footer__icon" />
           <span className="footer__text">토백이 소식</span>
         </Link>

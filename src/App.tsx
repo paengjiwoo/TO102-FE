@@ -1,17 +1,14 @@
-import {
-  RouterProvider,
-  createRouter,
-} from "@tanstack/react-router";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToHundredThemeProvider } from "./context/themeContext";
 import "./styles/global.scss";
 
-import { routeTree } from './routeTree.gen';
-const router = createRouter({ routeTree })
+import { routeTree } from "./routeTree.gen";
+const router = createRouter({ routeTree });
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
