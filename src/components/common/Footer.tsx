@@ -20,7 +20,9 @@ const Footer: React.FC = () => {
           <img src={chatIcon} alt="채팅" className="footer__icon" />
           <span className="footer__text">채팅</span>
         </Link>
-        <Link to="/" className="footer__link">
+        <Link to="/profile/$userId"
+          params={{ userId: '123' }} 
+        >
           <img src={profileIcon} alt="내 정보" className="footer__icon" />
           <span className="footer__text">내 정보</span>
         </Link>

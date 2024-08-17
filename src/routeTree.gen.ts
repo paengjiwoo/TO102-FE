@@ -12,7 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
-import { Route as ReviewpageImport } from './routes/reviewpage'
+import { Route as ReviewsImport } from './routes/reviews'
 import { Route as NewsImport } from './routes/news'
 import { Route as LoginImport } from './routes/login'
 import { Route as ChatImport } from './routes/chat'
@@ -26,8 +26,8 @@ const SignupRoute = SignupImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ReviewpageRoute = ReviewpageImport.update({
-  path: '/reviewpage',
+const ReviewsRoute = ReviewsImport.update({
+  path: '/reviews',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,11 +88,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsImport
       parentRoute: typeof rootRoute
     }
-    '/reviewpage': {
-      id: '/reviewpage'
-      path: '/reviewpage'
-      fullPath: '/reviewpage'
-      preLoaderRoute: typeof ReviewpageImport
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsImport
       parentRoute: typeof rootRoute
     }
     '/signup': {
@@ -119,7 +119,7 @@ export const routeTree = rootRoute.addChildren({
   ChatRoute,
   LoginRoute,
   NewsRoute,
-  ReviewpageRoute,
+  ReviewsRoute,
   SignupRoute,
   ProfileUserIdRoute,
 })
@@ -136,7 +136,7 @@ export const routeTree = rootRoute.addChildren({
         "/chat",
         "/login",
         "/news",
-        "/reviewpage",
+        "/reviews",
         "/signup",
         "/profile/$userId"
       ]
@@ -153,8 +153,8 @@ export const routeTree = rootRoute.addChildren({
     "/news": {
       "filePath": "news.tsx"
     },
-    "/reviewpage": {
-      "filePath": "reviewpage.tsx"
+    "/reviews": {
+      "filePath": "reviews.tsx"
     },
     "/signup": {
       "filePath": "signup.tsx"

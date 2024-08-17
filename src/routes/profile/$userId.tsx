@@ -1,5 +1,5 @@
 import React from "react";
-import {  createFileRoute } from "@tanstack/react-router";
+import {  Link, createFileRoute } from "@tanstack/react-router";
 import { useProfileData } from "../../hooks/profileHook";
 import UserInfoBox from "../../components/profile/UserInfoBox";
 import { IoChevronForwardSharp, IoStar } from "react-icons/io5";
@@ -13,7 +13,9 @@ const Profile: React.FC = () => {
 
   return (
     <div className="profile">
-      <UserInfoBox user={user}/>
+      <div className="profile__userinfo">
+        <UserInfoBox user={user}/>
+      </div>
 
       <div className="info">
         <div className="info__stars">
@@ -28,7 +30,9 @@ const Profile: React.FC = () => {
 
       <div className="reviews">
         <div className="reviews__title">받은 후기</div>
-        <IoChevronForwardSharp />
+        <Link to="/reviews" >
+          <IoChevronForwardSharp />
+        </Link>
       </div>
 
       <div className="feed">
