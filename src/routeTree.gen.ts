@@ -46,6 +46,11 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ProfileUserIdRoute = ProfileUserIdImport.update({
+  path: '/profile/$userId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const PostPostlistRoute = PostPostlistImport.update({
   path: '/post/postlist',
   getParentRoute: () => rootRoute,
@@ -81,6 +86,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsImport
+    },
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -109,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostPostlistImport
       parentRoute: typeof rootRoute
     }
+    '/profile/$userId': {
+      id: '/profile/$userId'
+      path: '/profile/$userId'
+      fullPath: '/profile/$userId'
+      preLoaderRoute: typeof ProfileUserIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -118,8 +136,9 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   ChatRoute,
   LoginRoute,
+  ReviewsRoute,
+  ProfileUserIdRoute,
   ProfileRoute,
-  ReviewpageRoute,
   PostCreatePostRoute,
   PostPostlistRoute,
 })
@@ -135,8 +154,9 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/chat",
         "/login",
+        "/reviews",
+        "/profile/$userId"
         "/profile",
-        "/reviewpage",
         "/post/CreatePost",
         "/post/postlist"
       ]
@@ -150,11 +170,13 @@ export const routeTree = rootRoute.addChildren({
     "/login": {
       "filePath": "login.tsx"
     },
+    "/reviews": {
+      "filePath": "reviews.tsx"
+    },
+    "/profile/$userId": {
+      "filePath": "profile/$userId.tsx"
     "/profile": {
       "filePath": "profile.tsx"
-    },
-    "/reviewpage": {
-      "filePath": "reviewpage.tsx"
     },
     "/post/CreatePost": {
       "filePath": "post/CreatePost.tsx"

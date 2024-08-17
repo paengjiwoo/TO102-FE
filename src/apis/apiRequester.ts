@@ -1,4 +1,3 @@
-// src/api/apiRequester.ts
 import axios, { AxiosInstance } from "axios";
 import { BASE_URL } from "./BASE_URL";
 
