@@ -11,7 +11,7 @@ import LoadingSpinner from "../../components/common/LoadingSpinner";
 type Category = "동행" | "맛집" | "가이드";
 
 const PostList: React.FC = () => {
-  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]); // 배열로 변경
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
   const location = useCurrentLocation();
 
   const { data: posts, isLoading } = useQuery({

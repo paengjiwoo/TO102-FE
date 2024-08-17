@@ -12,7 +12,9 @@ function Layout({ children }: LayoutProps) {
 
   const currentPath = router.state.location.pathname;
 
-  const shouldShowHeaderFooter = !currentPath.includes("/login");
+  const shouldShowHeaderFooter = !(
+    currentPath.includes("/login") || currentPath.includes("/post/CreatePost")
+  );
 
   return (
     <>
@@ -27,5 +29,5 @@ export default Layout;
 
 export const Route = createRootRoute({
   component: Layout,
-  notFoundComponent: Error
-})
+  notFoundComponent: Error,
+});

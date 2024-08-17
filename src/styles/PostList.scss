@@ -7,14 +7,14 @@
   margin-bottom: 10px;
   padding: 10px 0;
   display: flex;
-  align-items: center; /* 이미지와 텍스트를 수직으로 정렬 */
-  gap: 10px; /* 이미지와 텍스트 사이에 간격 추가 */
+  align-items: center;
+  gap: 10px;
 }
 
 .category-select {
   margin-bottom: 20px;
-  border-top: 1px solid #7a7a7a; /* 위쪽 테두리 */
-  border-bottom: 1px solid #7a7a7a; /* 아래쪽 테두리 */
+  border-top: 1px solid #7a7a7a;
+  border-bottom: 1px solid #7a7a7a;
   padding: 10px 0;
 
   button {

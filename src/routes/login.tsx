@@ -17,7 +17,6 @@ const Login: React.FC = () => {
 
 export default Login;
 
-// TanStack Router용 Route 내보내기 추가
 import { createFileRoute } from "@tanstack/react-router";
 import KakaoLoginButton from "../components/common/kakaoLoginButton";
 
