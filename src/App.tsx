@@ -1,4 +1,3 @@
-import React from "react";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToHundredThemeProvider } from "./context/themeContext";
