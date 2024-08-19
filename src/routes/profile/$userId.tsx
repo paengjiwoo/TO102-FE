@@ -7,6 +7,7 @@ import '../../styles/profile/profile.scss'
 import ReviewFeed from "../../components/review/ReviewFeed";
 import Header from "../../components/common/Header";
 import { useReviews } from "../../hooks/useReviews";
+import { sortDatesDescending } from "../../utils/sort";
 
 const Profile: React.FC = () => {
   // const { params: { userId },} = useMatch({ from: '/profile/$userId' });
@@ -40,7 +41,7 @@ const Profile: React.FC = () => {
         </div>
 
         <div className="feed">
-          <ReviewFeed type="received" reviews={reviews}/>
+          <ReviewFeed type="received" reviews={sortDatesDescending(reviews)}/>
         </div>
       </div>
     </>

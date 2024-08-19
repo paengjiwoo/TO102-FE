@@ -6,6 +6,7 @@ import { useProfileData } from "../hooks/useProfileData";
 import Tabs from "../components/common/Tabs";
 import { useReviews } from "../hooks/useReviews";
 import '../styles/reviews/reviews.scss'
+import { sortDatesDescending } from "../utils/sort";
 
 const ReviewPage: React.FC = () => {
   const [reviewType, setReviewType] = useState<"received" | "written">("received");
@@ -34,7 +35,7 @@ const ReviewPage: React.FC = () => {
         </div>
 
         <div className={reviewType==="received" ? "feed" : "written-feed"}>
-          <ReviewFeed type={reviewType} reviews={reviews}/>
+          <ReviewFeed type={reviewType} reviews={sortDatesDescending(reviews)}/>
         </div>
       </div>
     </>
