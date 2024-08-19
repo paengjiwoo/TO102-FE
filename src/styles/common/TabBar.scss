@@ -5,6 +5,8 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: 390px;
+  min-width: 320px;
   display: flex;
   justify-content: space-around;
 
@@ -21,27 +23,32 @@
     text-decoration: none;
     color: #333333;
     font-size: 12px;
-
-    &--active {
-      color: #007bff;
-    }
+    width: 80px;
   }
 
   &__icon {
     width: 24px;
     height: 24px;
     margin-bottom: 4px;
+    color: rgba(122, 122, 122, 1);
   }
 
   &__text {
     font-family: "Pretendard";
     font-size: 10px;
-    color: #333333;
+    color: rgba(122, 122, 122, 1);
   }
-}
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+  &__active-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    color: rgba(20, 125, 112, 1);
+  }
+
+  &__active-text {
+    font-family: "Pretendard";
+    font-size: 10px;
+    color: rgba(20, 125, 112, 1);
+  }
 }
