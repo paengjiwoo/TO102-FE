@@ -1,16 +1,20 @@
 import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import ReviewFeed from "../components/review/ReviewFeed";
+import Header from "../components/common/Header";
 
 const ReviewPage: React.FC = () => {
   return (
-    <div>
-      <div></div>
-
+    <>
+      <Header />
       <div>
-        <ReviewFeed />
+        <div></div>
+
+        <div>
+          <ReviewFeed />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

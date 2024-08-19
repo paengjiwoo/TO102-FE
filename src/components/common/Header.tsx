@@ -10,7 +10,8 @@ const routeName = [
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const currentPath = router.state.location.pathname.split('/')[1]; 
+  const currentPath = router.state.location.pathname.split('/')[1];
+  console.log(currentPath); 
 
   return (<>
     {routeName.map(name => {

@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.box {
+  &__info {
+    display: flex;
+    align-items: center;
+
+    &__name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    &__loc {
+      margin-left: 5px;
+      display: flex;
+      color: rgba(122, 122, 122, 1);
+      font-size: 12.5px;
+    }
+  }
+
+  &__content {
+    margin-top: 10px;
+    font-size: 13.5px;
+    line-height: 16px;
+  }
+
+  &__rating {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+
+    &__stars {
+      color: rgba(20, 125, 112, 1);
+    }
+
+    &__date {
+      margin-left: 5px;
+      color: rgba(122, 122, 122, 1);
+      font-size: 12.5px;
+    }
+  }
+}

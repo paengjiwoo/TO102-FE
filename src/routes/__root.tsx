@@ -1,5 +1,4 @@
 import { useRouter, Outlet, createRootRoute } from "@tanstack/react-router";
-import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import Error from "../components/common/Error";
 
@@ -14,7 +13,6 @@ function Layout() {
 
   return (
     <>
-      {shouldShowHeaderFooter && <Header />}
       <div style={{ padding: '0px 25px'}}>
         <Outlet />
       </div>
