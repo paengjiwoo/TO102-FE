@@ -1,9 +1,9 @@
-import { IoLocationOutline } from "react-icons/io5";
 import { TReview } from "../../models/review.model";
 import { renderStars } from "./ReceivedReview";
 import { dateFormatter } from "../../utils/formatter";
 import { useProfileData } from "../../hooks/useProfileData";
 import '../../styles/reviews/WrittenReview.scss'
+import Location from "../common/Location";
 
 type TProps = {
   review: TReview
@@ -15,8 +15,7 @@ const MyReview = ({ review }: TProps) => {
   return(
     <div className="review">
       <div className="review__loc">
-        <IoLocationOutline className="review__loc__icon"/>
-        <div className="review__loc__name">서울특별시 은평구</div>
+        <Location location="서울특별시 은평구" />
       </div>
 
       <div className="review__content">{review.content}</div>

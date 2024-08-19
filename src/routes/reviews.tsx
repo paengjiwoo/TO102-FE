@@ -17,7 +17,6 @@ const ReviewPage: React.FC = () => {
   const tabTypes = [
     ["received", "written"],
     ["받은 후기", "작성한 후기"],
-    []
   ];
 
   return (

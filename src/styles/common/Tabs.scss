@@ -1,6 +1,6 @@
 .tab-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .link {
@@ -19,6 +19,7 @@
   position: relative;
   border-bottom: 2px solid #ddd;
   width: 92%;
+  cursor: pointer;
 
   &__indicator {
     position: absolute;

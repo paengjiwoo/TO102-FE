@@ -1,0 +1,52 @@
+.chat-tabs {
+  margin: 0 auto;
+}
+
+.chatrooms {
+  padding: 20px 20px 80px 20px;
+}
+
+.chat {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+
+  img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__content {
+
+    &__user {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &__message {
+      width: 235px;
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+      margin-top: 5px;
+    
+      &__detail {
+        font-size: 11px;
+        width: 185px;
+        
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &__date {
+        color: rgba(122, 122, 122, 1);
+        font-size: 10px;
+      }
+    }
+
+  }
+}

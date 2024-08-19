@@ -13,7 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as ReviewsImport } from './routes/reviews'
 import { Route as LoginImport } from './routes/login'
-import { Route as ChatImport } from './routes/chat'
+import { Route as ChatroomsImport } from './routes/chatrooms'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProfileUserIdImport } from './routes/profile/$userId'
 import { Route as PostPostlistImport } from './routes/post/postlist'
@@ -31,8 +31,8 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const ChatRoute = ChatImport.update({
-  path: '/chat',
+const ChatroomsRoute = ChatroomsImport.update({
+  path: '/chatrooms',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,11 +67,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/chat': {
-      id: '/chat'
-      path: '/chat'
-      fullPath: '/chat'
-      preLoaderRoute: typeof ChatImport
+    '/chatrooms': {
+      id: '/chatrooms'
+      path: '/chatrooms'
+      fullPath: '/chatrooms'
+      preLoaderRoute: typeof ChatroomsImport
       parentRoute: typeof rootRoute
     }
     '/login': {
@@ -116,7 +116,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  ChatRoute,
+  ChatroomsRoute,
   LoginRoute,
   ReviewsRoute,
   PostCreatePostRoute,
@@ -133,7 +133,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/chat",
+        "/chatrooms",
         "/login",
         "/reviews",
         "/post/CreatePost",
@@ -144,8 +144,8 @@ export const routeTree = rootRoute.addChildren({
     "/": {
       "filePath": "index.tsx"
     },
-    "/chat": {
-      "filePath": "chat.tsx"
+    "/chatrooms": {
+      "filePath": "chatrooms.tsx"
     },
     "/login": {
       "filePath": "login.tsx"

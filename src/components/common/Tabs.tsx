@@ -4,8 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import '../../styles/common/Tabs.scss';
 
 type TProps = {
-  url: string;
-  params: any;
+  url?: string;
+  params?: any;
   setFunction: any;
   tabTypes: any;
   lenInfo: number;
@@ -26,9 +26,11 @@ const Tabs = ({ url, params, setFunction, tabTypes, lenInfo }: TProps) => {
   
   return(
     <div className="tab-container">
-      <Link className="link" to={url} params={params}>
-        <IoChevronForwardSharp className="link__icon"/>
-      </Link>
+      {url && (
+        <Link className="link" to={url} params={params}>
+          <IoChevronForwardSharp className="link__icon"/>
+        </Link>
+      )}
 
       <div className="tabs">
         {tabTypes[0].map((tab: string, idx: number) => (

@@ -14,7 +14,7 @@ function Layout() {
 
   return (
     <>
-      <div>
+      <div className="web">
         <div className="app">
           <div className="app__page">
             <Outlet />
