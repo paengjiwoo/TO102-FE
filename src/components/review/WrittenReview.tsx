@@ -2,7 +2,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { TReview } from "../../models/review.model";
 import { renderStars } from "./ReceivedReview";
 import { dateFormatter } from "../../utils/formatter";
-import { useProfileData } from "../../hooks/profileHook";
+import { useProfileData } from "../../hooks/useProfileData";
 import '../../styles/reviews/WrittenReview.scss'
 
 type TProps = {

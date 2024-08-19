@@ -1,16 +1,20 @@
-import { useReviews } from '../../hooks/ReviewHook';
+import { TReview } from '../../models/review.model';
 import ReceivedReview from './ReceivedReview';
 import WrittenReview from './WrittenReview';
 
-const ReviewFeed = () => {
-  const { reviews } = useReviews();
+type TProps = {
+  type: "received" | "written";
+  reviews: TReview[];
+}
+
+const ReviewFeed = ({ type, reviews }: TProps) => {
 
   return(
     <div>
-      {/* {reviews.length && reviews.map(review => 
+      {type === "received" && reviews.length && reviews.map(review => 
         (<ReceivedReview key={review.id} review={review}/>)
-      )} */}
-      {reviews.length && reviews.map(review => 
+      )}
+      {type === "written" && reviews.length && reviews.map(review => 
         (<WrittenReview key={review.id} review={review} />)
       )}
     </div>

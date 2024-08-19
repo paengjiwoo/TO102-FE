@@ -1,7 +1,7 @@
 // src/components/common/Footer.tsx
 import React from "react";
 import { Link } from "@tanstack/react-router";
-import "../../styles/Footer.scss";
+import "../../styles/common/Footer.scss";
 import { chatIcon, homeIcon, mapIcon, profileIcon } from "../../assets/icons";
 
 const Footer: React.FC = () => {

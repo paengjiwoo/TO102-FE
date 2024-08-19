@@ -1,15 +1,16 @@
 import React from "react";
 import {  Link, createFileRoute } from "@tanstack/react-router";
-import { useProfileData } from "../../hooks/profileHook";
+import { useProfileData } from "../../hooks/useProfileData";
 import UserInfoBox from "../../components/profile/UserInfoBox";
 import { IoChevronForwardSharp, IoStar } from "react-icons/io5";
 import '../../styles/profile/profile.scss'
 import ReviewFeed from "../../components/review/ReviewFeed";
 import Header from "../../components/common/Header";
+import { useReviews } from "../../hooks/useReviews";
 
 const Profile: React.FC = () => {
   // const { params: { userId },} = useMatch({ from: '/profile/$userId' });
-
+  const { reviews } = useReviews();
   const { user } = useProfileData(); 
 
   return (
@@ -27,7 +28,7 @@ const Profile: React.FC = () => {
           </div>
 
           <div className="info__reviews">
-            22 reviews
+            {reviews.length} reviews
           </div>
         </div>
 
@@ -39,7 +40,7 @@ const Profile: React.FC = () => {
         </div>
 
         <div className="feed">
-          <ReviewFeed />
+          <ReviewFeed type="received" reviews={reviews}/>
         </div>
       </div>
     </>

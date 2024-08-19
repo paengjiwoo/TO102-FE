@@ -1,7 +1,7 @@
 .container {
   display: flex;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 
   img {
     width: 50px;
@@ -42,10 +42,10 @@
 
     &__stars {
       color: rgba(20, 125, 112, 1);
+      margin-right: 5px;
     }
 
     &__date {
-      margin-left: 5px;
       color: rgba(122, 122, 122, 1);
       font-size: 12.5px;
     }

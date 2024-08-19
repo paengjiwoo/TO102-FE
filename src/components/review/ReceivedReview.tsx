@@ -2,7 +2,7 @@ import { IoLocationOutline, IoStar } from "react-icons/io5";
 import { TReview } from "../../models/review.model";
 import { dateFormatter } from "../../utils/formatter";
 import '../../styles/reviews/ReceivedReview.scss'
-import { useProfileData } from "../../hooks/profileHook";
+import { useProfileData } from "../../hooks/useProfileData";
 
 type TProps = {
   review: TReview
