@@ -10,7 +10,7 @@ const TabBar: React.FC = () => {
   const tabs = [
     { label: "지도 찾기", path: "/", params: null, src: IoMapOutline, id: ""},
     { label: "토백이 소식", path: "/post/postlist", params: null, src: IoHomeOutline, id: "post"},
-    { label: "채팅", path: "/chatrooms", params: null, src: IoChatboxEllipsesOutline, id: "chatrooms"},
+    { label: "채팅", path: "/rooms", params: null, src: IoChatboxEllipsesOutline, id: "rooms"},
     { label: "내 정보", path: "/profile/$userId", params: { userId: '123' }, src: IoPersonCircleOutline, id: "profile"},
   ];
 

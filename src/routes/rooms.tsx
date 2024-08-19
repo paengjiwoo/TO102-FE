@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import Header from "../components/common/Header";
 import Tabs from "../components/common/Tabs";
 import '../styles/chat/chatrooms.scss'
@@ -29,23 +29,25 @@ const ChatRoomsComponent: React.FC = () => {
 
       <div className="chatrooms">
         {sortChatDateDescending(chatRooms).map((room: any) => (
-          <div className="chat" key={room.chat_room_id}>
-            <img src={faker.image.url()} alt="" />
-            <div className="chat__content">
-              <div className="chat__content__user">
-                <div>{faker.person.fullName()}</div>
-                <div><Location location="서울특별시 은평구"/></div>
-              </div>
-              <div className="chat__content__message">
-                <div className="chat__content__message__detail">
-                  {faker.lorem.text().padEnd(1, ' ').substring(1, 100)},
+          <Link to="/chat/$chatRoomId" params={{ chatRoomId : room.chat_room_id }}>
+            <div className="chat" key={room.chat_room_id}>
+              <img src={faker.image.url()} alt="" />
+              <div className="chat__content">
+                <div className="chat__content__user">
+                  <div>{faker.person.fullName()}</div>
+                  <div><Location location="서울특별시 은평구"/></div>
                 </div>
-                <div className="chat__content__message__date">
-                  {formatDistanceToNow(room.last_message_at)}
+                <div className="chat__content__message">
+                  <div className="chat__content__message__detail">
+                    {faker.lorem.text().padEnd(1, ' ').substring(1, 100)},
+                  </div>
+                  <div className="chat__content__message__date">
+                    {formatDistanceToNow(room.last_message_at)}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -54,6 +56,6 @@ const ChatRoomsComponent: React.FC = () => {
 
 export default ChatRoomsComponent;
 
-export const Route = createFileRoute('/chatrooms')({
+export const Route = createFileRoute('/rooms')({
   component: ChatRoomsComponent,
 })

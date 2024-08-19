@@ -4,7 +4,7 @@ import '../../styles/common/Header.scss'
 
 const routeName = [
   ['profile', '프로필'],
-  ['chatrooms', '채팅'],
+  ['rooms', '채팅'],
   ['reviews', '후가']
 ]
 
