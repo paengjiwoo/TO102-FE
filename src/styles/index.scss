@@ -1,0 +1,54 @@
+.container-idx {
+  padding: 25px 15px 0 15px;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.select {
+  padding-top: 20px;
+  margin-bottom: 30px;
+  
+  &__title {
+
+    &__logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: rgba(20, 125, 112, 1)
+    }
+
+    &__main {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__res {
+    display: flex;
+    align-items: end;
+    padding: 5px 0;
+    border-bottom: 0.5px solid rgba(122, 122, 122, 1);
+    height: 36px;
+    margin: 15px 0 15px 0;
+    font-size: 19px;
+    font-weight: 600;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: 0.5px solid rgba(122, 122, 122, 1);
+    border-radius: 0.5rem;
+    color: rgba(122, 122, 122, 1);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+
+    &:hover {
+      color: black;
+      border: 0.5px solid black;
+    }
+  }
+}
