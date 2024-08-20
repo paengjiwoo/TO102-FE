@@ -1,16 +1,16 @@
 import { useRouter } from "@tanstack/react-router";
 import React from "react";
-import '../../styles/Header.scss'
+import '../../styles/common/Header.scss'
 
 const routeName = [
   ['profile', '프로필'],
-  ['chat', '채팅'],
+  ['rooms', '채팅'],
   ['reviews', '후가']
 ]
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const currentPath = router.state.location.pathname.split('/')[1]; 
+  const currentPath = router.state.location.pathname.split('/')[1];
 
   return (<>
     {routeName.map(name => {

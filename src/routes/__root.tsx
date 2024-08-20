@@ -1,24 +1,31 @@
-import { useRouter, Outlet, createRootRoute } from "@tanstack/react-router";
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
+import { Outlet, createRootRoute, useLocation } from "@tanstack/react-router";
+import TabBar from "../components/common/TabBar";
 import Error from "../components/common/Error";
+import '../styles/__root.scss'
 
 function Layout() {
-  const router = useRouter();
+  const router = useLocation();
 
-  const currentPath = router.state.location.pathname;
+  const currentPath = router.href;
 
-  const shouldShowHeaderFooter = !(
-    currentPath.includes("/login") || currentPath.includes("/post/CreatePost")
+  const shouldShowHeaderTabBar = !(
+    currentPath.includes("/login") 
+    || currentPath.includes("/post/CreatePost")
+    || currentPath.includes("/chat")
   );
 
   return (
     <>
-      {shouldShowHeaderFooter && <Header />}
-      <div style={{ padding: '0px 25px'}}>
-        <Outlet />
+      <div className="web">
+        <div className="app">
+          <div className="app__page">
+            <Outlet />
+          </div>
+          <div className="app__tabbar">
+            {shouldShowHeaderTabBar && <TabBar />}
+          </div>
+        </div>
       </div>
-      {shouldShowHeaderFooter && <Footer />}
     </>
   );
 }

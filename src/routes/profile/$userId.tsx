@@ -1,44 +1,50 @@
 import React from "react";
 import {  Link, createFileRoute } from "@tanstack/react-router";
-import { useProfileData } from "../../hooks/profileHook";
+import { useProfileData } from "../../hooks/useProfileData";
 import UserInfoBox from "../../components/profile/UserInfoBox";
 import { IoChevronForwardSharp, IoStar } from "react-icons/io5";
 import '../../styles/profile/profile.scss'
 import ReviewFeed from "../../components/review/ReviewFeed";
+import Header from "../../components/common/Header";
+import { useReviews } from "../../hooks/useReviews";
+import { sortDatesDescending } from "../../utils/sort";
 
 const Profile: React.FC = () => {
   // const { params: { userId },} = useMatch({ from: '/profile/$userId' });
-
+  const { reviews } = useReviews();
   const { user } = useProfileData(); 
 
   return (
-    <div className="profile">
-      <div className="profile__userinfo">
-        <UserInfoBox user={user}/>
-      </div>
-
-      <div className="info">
-        <div className="info__stars">
-          <IoStar className="info__stars__star"/>
-          <div className="info__stars__rate">{user.average_rating}</div>
+    <>
+      <Header />
+      <div className="profile">
+        <div className="profile__userinfo">
+          <UserInfoBox user={user}/>
         </div>
 
-        <div className="info__reviews">
-          22 reviews
+        <div className="info">
+          <div className="info__stars">
+            <IoStar className="info__stars__star"/>
+            <div className="info__stars__rate">{user.average_rating}</div>
+          </div>
+
+          <div className="info__reviews">
+            {reviews.length} reviews
+          </div>
+        </div>
+
+        <div className="reviews">
+          <div className="reviews__title">받은 후기</div>
+          <Link to="/reviews" >
+            <IoChevronForwardSharp />
+          </Link>
+        </div>
+
+        <div className="feed">
+          <ReviewFeed type="received" reviews={sortDatesDescending(reviews)}/>
         </div>
       </div>
-
-      <div className="reviews">
-        <div className="reviews__title">받은 후기</div>
-        <Link to="/reviews" >
-          <IoChevronForwardSharp />
-        </Link>
-      </div>
-
-      <div className="feed">
-        <ReviewFeed />
-      </div>
-    </div>
+    </>
   );
 };
 
