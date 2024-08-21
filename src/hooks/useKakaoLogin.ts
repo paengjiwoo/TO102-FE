@@ -7,7 +7,7 @@ export const useKakaoLogin = () => {
 
   const handleLogin = () => {
     setIsLoading(true);
-    window.location.href = KAKAO_AUTH_URL;
+    window.location.href = KAKAO_AUTH_URL; // 카카오 로그인 페이지로 리다이렉트
   };
 
   return { handleLogin, isLoading };

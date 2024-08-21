@@ -18,6 +18,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as ProfileUserIdImport } from './routes/profile/$userId'
 import { Route as PostPostlistImport } from './routes/post/postlist'
 import { Route as PostCreatePostImport } from './routes/post/CreatePost'
+import { Route as AuthKakaoCallbackImport } from './routes/auth/kakao/callback'
 
 // Create/Update Routes
 
@@ -53,6 +54,11 @@ const PostPostlistRoute = PostPostlistImport.update({
 
 const PostCreatePostRoute = PostCreatePostImport.update({
   path: '/post/CreatePost',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthKakaoCallbackRoute = AuthKakaoCallbackImport.update({
+  path: '/auth/kakao/callback',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -109,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileUserIdImport
       parentRoute: typeof rootRoute
     }
+    '/auth/kakao/callback': {
+      id: '/auth/kakao/callback'
+      path: '/auth/kakao/callback'
+      fullPath: '/auth/kakao/callback'
+      preLoaderRoute: typeof AuthKakaoCallbackImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -122,6 +135,7 @@ export const routeTree = rootRoute.addChildren({
   PostCreatePostRoute,
   PostPostlistRoute,
   ProfileUserIdRoute,
+  AuthKakaoCallbackRoute,
 })
 
 /* prettier-ignore-end */
@@ -138,7 +152,8 @@ export const routeTree = rootRoute.addChildren({
         "/reviews",
         "/post/CreatePost",
         "/post/postlist",
-        "/profile/$userId"
+        "/profile/$userId",
+        "/auth/kakao/callback"
       ]
     },
     "/": {
@@ -161,6 +176,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/profile/$userId": {
       "filePath": "profile/$userId.tsx"
+    },
+    "/auth/kakao/callback": {
+      "filePath": "auth/kakao/callback.tsx"
     }
   }
 }
