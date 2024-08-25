@@ -1,7 +1,7 @@
 import React from "react";
 import { useKakaoLogin } from "../../hooks/useKakaoLogin";
 import "../../styles/Login.scss";
-import { kakaoIcon } from "../../assets/icons"; // kakaoIcon도 함께 import
+import { kakaoIcon } from "../../assets/icons";
 
 const KakaoLoginButton: React.FC = () => {
   const { handleLogin, isLoading } = useKakaoLogin();

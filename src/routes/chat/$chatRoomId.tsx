@@ -6,6 +6,7 @@ import Location from '../../components/common/Location';
 import { BsThreeDots } from 'react-icons/bs';
 import '../../styles/chat/chat.scss';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
+
 import { Timestamp, addDoc, collection, getFirestore, limit, orderBy, query } from 'firebase/firestore';
 import { app } from '../../firebaseConfig';
 import { useFirestoreQuery } from '../../hooks/useFirestoreQuery';
