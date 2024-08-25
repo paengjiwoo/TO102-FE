@@ -1,0 +1,76 @@
+// VerifyLocation.scss
+
+.verify-location-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  // 화면 크기 고정
+  width: 700px; // 전체 화면 너비
+  height: 500px; // 전체 화면 높이
+  box-sizing: border-box; // padding을 포함한 크기 계산
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #666;
+      cursor: pointer;
+      margin-right: 10px;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .map-container {
+    width: 100%;
+    flex-grow: 1; // 지도 영역이 남은 공간을 모두 차지하도록 함
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .confirm-button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #45a049;
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}
