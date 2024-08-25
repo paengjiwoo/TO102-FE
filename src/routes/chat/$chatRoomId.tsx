@@ -1,14 +1,11 @@
 import { Link, createFileRoute, useMatch } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react';
 import { IoChevronForwardSharp, IoPersonAdd, IoStar } from 'react-icons/io5';
-import io from "socket.io-client";
 import { useProfileData } from '../../hooks/useProfileData';
 import Location from '../../components/common/Location';
 import { BsThreeDots } from 'react-icons/bs';
 import '../../styles/chat/chat.scss';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
-
-const socket = io("http://localhost:3000");
 
 const Chat: React.FC = () => {
   const { params: { chatRoomId },} = useMatch({ from: '/chat/$chatRoomId' });
@@ -19,7 +16,6 @@ const Chat: React.FC = () => {
   const [inputValue, seInputValue] = useState('');
 
   const sendMessage = () => {
-    socket.emit("send_message", { message: `${inputValue}` });
     setMessages(prev => [...prev, { text: inputValue, type: 'send' }]);
     seInputValue('');
     console.log(inputValue);
@@ -27,18 +23,10 @@ const Chat: React.FC = () => {
 
   useEffect(() => {
     if (chatRoomId) {
-      socket.emit("join_room", chatRoomId);
       console.log(`Joined room: ${chatRoomId}`);
     }
 
-    socket.on("receive_message", (data) => {
-      setMessages(prev => [...prev, { text: inputValue, type: 'receive' }]);
-      console.log(data);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
+    setMessages(prev => [...prev, { text: inputValue, type: 'receive' }]);
   }, []);
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
