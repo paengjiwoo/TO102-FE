@@ -1,8 +1,10 @@
 .post-list-container {
-  width: 700px;
+  width: 110%;
+  max-width: 400px; /* 전역 스타일에 맞게 max-width 설정 */
   height: 100vh;
   margin: 0 auto;
-  overflow-y: auto;
+  overflow-y: auto; /* 수직 스크롤만 활성화 */
+  overflow-x: hidden; /* 수평 스크롤 비활성화 */
   background-color: #f9f9f9;
   position: relative;
   padding-bottom: 80px;
@@ -169,7 +171,8 @@
 
   .create-post-button {
     position: fixed;
-    right: calc((100vw - 700px) / 2 + 30px);
+    left: 66%;
+    transform: translateX(-50%);
     bottom: 80px;
     background-color: #147d70;
     color: white;

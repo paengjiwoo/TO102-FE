@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import "../../styles/PostList.scss";
+import "../../styles/post/PostList.scss";
 import { PostResponse } from "../../apis/posts";
 import plus from "../../assets/icons/plus.svg";
 import useCurrentLocation from "../../hooks/useCurrentLocation";

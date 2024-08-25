@@ -1,10 +1,12 @@
 .create-post-container {
-  width: 700px;
+  width: 110%;
+  max-width: 390px;
   height: 100vh;
   margin: 0 auto;
-  padding: 20px;
   background-color: #ffffff;
   overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box; /* padding 포함 */
 }
 
 .header {
@@ -57,7 +59,7 @@
       text-align: center;
       color: #d9d9d9;
       padding: 10px;
-      width: 45%;
+      width: calc(50% - 10px); /* 버튼 사이의 간격 유지 */
       height: 120px;
 
       .image-upload-label,
@@ -99,6 +101,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    box-sizing: border-box;
   }
 
   textarea {

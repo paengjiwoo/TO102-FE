@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import "../../styles/MyFriends.scss";
+import "../../styles/mypage/MyFriends.scss";
 
 interface User {
   username: string;

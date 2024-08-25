@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import "../../styles/CreatePost.scss";
+import "../../styles/post/CreatePost.scss";
 import useCurrentLocation from "../../hooks/useCurrentLocation";
 import pictureImg from "../../assets/icons/pictureImg.svg";
 import tagImg from "../../assets/icons/tagImg.svg";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/NotificationSettings.scss";
+import "../../styles/mypage/NotificationSettings.scss";
 import {
   fetchUserPreferences,
   updateUserPreferences,

@@ -10,173 +10,224 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as ReviewsImport } from "./routes/reviews";
-import { Route as LoginImport } from "./routes/login";
-import { Route as ChatImport } from "./routes/chat";
-import { Route as IndexImport } from "./routes/index";
-import { Route as ProfileUserIdImport } from "./routes/profile/$userId";
-import { Route as PostPostlistImport } from "./routes/post/postlist";
-import { Route as PostCreatePostImport } from "./routes/post/CreatePost";
-import { Route as MypageMypostsImport } from "./routes/mypage/myposts";
-import { Route as MypageMypageImport } from "./routes/mypage/mypage";
-import { Route as MypageMyfriendsImport } from "./routes/mypage/myfriends";
-import { Route as MypageVerifyLocationImport } from "./routes/mypage/VerifyLocation";
-import { Route as MypageNotificationSettingsImport } from "./routes/mypage/NotificationSettings";
-import { Route as AuthKakaoCallbackImport } from "./routes/auth/kakao/callback";
-import { Route as ChatChatRoomIdImport } from "./routes/chat/$chatRoomId";
+import { Route as rootRoute } from './routes/__root'
+import { Route as RoomsImport } from './routes/rooms'
+import { Route as ReviewsImport } from './routes/reviews'
+import { Route as LoginImport } from './routes/login'
+import { Route as IndexImport } from './routes/index'
+import { Route as ProfileUserIdImport } from './routes/profile/$userId'
+import { Route as PostPostsImport } from './routes/post/posts'
+import { Route as PostPostDetailImport } from './routes/post/PostDetail'
+import { Route as PostEditPostImport } from './routes/post/EditPost'
+import { Route as PostCreatePostImport } from './routes/post/CreatePost'
+import { Route as MypageMypostsImport } from './routes/mypage/myposts'
+import { Route as MypageMypageImport } from './routes/mypage/mypage'
+import { Route as MypageMyfriendsImport } from './routes/mypage/myfriends'
+import { Route as MypageVerifyLocationImport } from './routes/mypage/VerifyLocation'
+import { Route as MypageNotificationSettingsImport } from './routes/mypage/NotificationSettings'
+import { Route as ChatChatRoomIdImport } from './routes/chat/$chatRoomId'
+import { Route as AuthKakaoCallbackImport } from './routes/auth/kakao/callback'
 
 // Create/Update Routes
 
 const RoomsRoute = RoomsImport.update({
-  path: "/rooms",
+  path: '/rooms',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const ReviewsRoute = ReviewsImport.update({
-  path: "/reviews",
+  path: '/reviews',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const LoginRoute = LoginImport.update({
-  path: "/login",
+  path: '/login',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const IndexRoute = IndexImport.update({
-  path: "/",
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const ProfileUserIdRoute = ProfileUserIdImport.update({
-  path: "/profile/$userId",
+  path: '/profile/$userId',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const PostPostsRoute = PostPostsImport.update({
-  path: "/post/posts",
+  path: '/post/posts',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const PostPostDetailRoute = PostPostDetailImport.update({
-  path: "/post/PostDetail",
+  path: '/post/PostDetail',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const PostEditPostRoute = PostEditPostImport.update({
-  path: "/post/EditPost",
+  path: '/post/EditPost',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const PostCreatePostRoute = PostCreatePostImport.update({
-  path: "/post/CreatePost",
+  path: '/post/CreatePost',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const MypageMypostsRoute = MypageMypostsImport.update({
-  path: "/mypage/myposts",
+  path: '/mypage/myposts',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const MypageMypageRoute = MypageMypageImport.update({
-  path: "/mypage/mypage",
+  path: '/mypage/mypage',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const MypageMyfriendsRoute = MypageMyfriendsImport.update({
-  path: "/mypage/myfriends",
+  path: '/mypage/myfriends',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const MypageVerifyLocationRoute = MypageVerifyLocationImport.update({
-  path: "/mypage/VerifyLocation",
+  path: '/mypage/VerifyLocation',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const MypageNotificationSettingsRoute = MypageNotificationSettingsImport.update(
   {
-    path: "/mypage/NotificationSettings",
+    path: '/mypage/NotificationSettings',
     getParentRoute: () => rootRoute,
-  } as any
-);
-
-const AuthKakaoCallbackRoute = AuthKakaoCallbackImport.update({
-  path: "/auth/kakao/callback",
-  getParentRoute: () => rootRoute,
-} as any);
+  } as any,
+)
 
 const ChatChatRoomIdRoute = ChatChatRoomIdImport.update({
-  path: "/chat/$chatRoomId",
+  path: '/chat/$chatRoomId',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
+
+const AuthKakaoCallbackRoute = AuthKakaoCallbackImport.update({
+  path: '/auth/kakao/callback',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/login": {
-      id: "/login";
-      path: "/login";
-      fullPath: "/login";
-      preLoaderRoute: typeof LoginImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/reviews": {
-      id: "/reviews";
-      path: "/reviews";
-      fullPath: "/reviews";
-      preLoaderRoute: typeof ReviewsImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/post/CreatePost": {
-      id: "/post/CreatePost";
-      path: "/post/CreatePost";
-      fullPath: "/post/CreatePost";
-      preLoaderRoute: typeof PostCreatePostImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/post/EditPost": {
-      id: "/post/EditPost";
-      path: "/post/EditPost";
-      fullPath: "/post/EditPost";
-      preLoaderRoute: typeof PostEditPostImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/post/PostDetail": {
-      id: "/post/PostDetail";
-      path: "/post/PostDetail";
-      fullPath: "/post/PostDetail";
-      preLoaderRoute: typeof PostPostDetailImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/post/posts": {
-      id: "/post/posts";
-      path: "/post/posts";
-      fullPath: "/post/posts";
-      preLoaderRoute: typeof PostPostsImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/profile/$userId": {
-      id: "/profile/$userId";
-      path: "/profile/$userId";
-      fullPath: "/profile/$userId";
-      preLoaderRoute: typeof ProfileUserIdImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/auth/kakao/callback": {
-      id: "/auth/kakao/callback";
-      path: "/auth/kakao/callback";
-      fullPath: "/auth/kakao/callback";
-      preLoaderRoute: typeof AuthKakaoCallbackImport;
-      parentRoute: typeof rootRoute;
-    };
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsImport
+      parentRoute: typeof rootRoute
+    }
+    '/rooms': {
+      id: '/rooms'
+      path: '/rooms'
+      fullPath: '/rooms'
+      preLoaderRoute: typeof RoomsImport
+      parentRoute: typeof rootRoute
+    }
+    '/chat/$chatRoomId': {
+      id: '/chat/$chatRoomId'
+      path: '/chat/$chatRoomId'
+      fullPath: '/chat/$chatRoomId'
+      preLoaderRoute: typeof ChatChatRoomIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/mypage/NotificationSettings': {
+      id: '/mypage/NotificationSettings'
+      path: '/mypage/NotificationSettings'
+      fullPath: '/mypage/NotificationSettings'
+      preLoaderRoute: typeof MypageNotificationSettingsImport
+      parentRoute: typeof rootRoute
+    }
+    '/mypage/VerifyLocation': {
+      id: '/mypage/VerifyLocation'
+      path: '/mypage/VerifyLocation'
+      fullPath: '/mypage/VerifyLocation'
+      preLoaderRoute: typeof MypageVerifyLocationImport
+      parentRoute: typeof rootRoute
+    }
+    '/mypage/myfriends': {
+      id: '/mypage/myfriends'
+      path: '/mypage/myfriends'
+      fullPath: '/mypage/myfriends'
+      preLoaderRoute: typeof MypageMyfriendsImport
+      parentRoute: typeof rootRoute
+    }
+    '/mypage/mypage': {
+      id: '/mypage/mypage'
+      path: '/mypage/mypage'
+      fullPath: '/mypage/mypage'
+      preLoaderRoute: typeof MypageMypageImport
+      parentRoute: typeof rootRoute
+    }
+    '/mypage/myposts': {
+      id: '/mypage/myposts'
+      path: '/mypage/myposts'
+      fullPath: '/mypage/myposts'
+      preLoaderRoute: typeof MypageMypostsImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/CreatePost': {
+      id: '/post/CreatePost'
+      path: '/post/CreatePost'
+      fullPath: '/post/CreatePost'
+      preLoaderRoute: typeof PostCreatePostImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/EditPost': {
+      id: '/post/EditPost'
+      path: '/post/EditPost'
+      fullPath: '/post/EditPost'
+      preLoaderRoute: typeof PostEditPostImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/PostDetail': {
+      id: '/post/PostDetail'
+      path: '/post/PostDetail'
+      fullPath: '/post/PostDetail'
+      preLoaderRoute: typeof PostPostDetailImport
+      parentRoute: typeof rootRoute
+    }
+    '/post/posts': {
+      id: '/post/posts'
+      path: '/post/posts'
+      fullPath: '/post/posts'
+      preLoaderRoute: typeof PostPostsImport
+      parentRoute: typeof rootRoute
+    }
+    '/profile/$userId': {
+      id: '/profile/$userId'
+      path: '/profile/$userId'
+      fullPath: '/profile/$userId'
+      preLoaderRoute: typeof ProfileUserIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/auth/kakao/callback': {
+      id: '/auth/kakao/callback'
+      path: '/auth/kakao/callback'
+      fullPath: '/auth/kakao/callback'
+      preLoaderRoute: typeof AuthKakaoCallbackImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -186,6 +237,8 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   LoginRoute,
   ReviewsRoute,
+  RoomsRoute,
+  ChatChatRoomIdRoute,
   MypageNotificationSettingsRoute,
   MypageVerifyLocationRoute,
   MypageMyfriendsRoute,
@@ -197,7 +250,7 @@ export const routeTree = rootRoute.addChildren({
   PostPostsRoute,
   ProfileUserIdRoute,
   AuthKakaoCallbackRoute,
-});
+})
 
 /* prettier-ignore-end */
 
@@ -210,6 +263,8 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/login",
         "/reviews",
+        "/rooms",
+        "/chat/$chatRoomId",
         "/mypage/NotificationSettings",
         "/mypage/VerifyLocation",
         "/mypage/myfriends",
@@ -231,6 +286,12 @@ export const routeTree = rootRoute.addChildren({
     },
     "/reviews": {
       "filePath": "reviews.tsx"
+    },
+    "/rooms": {
+      "filePath": "rooms.tsx"
+    },
+    "/chat/$chatRoomId": {
+      "filePath": "chat/$chatRoomId.tsx"
     },
     "/mypage/NotificationSettings": {
       "filePath": "mypage/NotificationSettings.tsx"
