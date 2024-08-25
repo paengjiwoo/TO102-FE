@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { locations } from "../models/location.model";
 import { TLocation } from "../models/location.model";
 import '../styles/index.scss'
-import NewPostCard from "../components/common/NewPostCard";
+import RecentCarousel from "../components/common/RecentCarousel";
+import { fakerKO as faker } from "@faker-js/faker";
 
 const Home: React.FC = () => {
   const [locName, setLocName] = useState<string>("서울특별시")
@@ -37,11 +38,7 @@ const Home: React.FC = () => {
       </div>
 
       <div>
-        <div>새로운 토백이 💫</div>
-        <div>
-          <NewPostCard />
-          <NewPostCard />
-        </div>
+       <RecentCarousel items={items}/>
       </div>
     </div>
   );
@@ -52,3 +49,48 @@ export default Home;
 export const Route = createFileRoute('/')({
   component: Home,
 })
+
+const items = [
+  {
+    post_id: 1,
+    user_id: 1,
+    location_id: 2,
+    title: '바다 여행',
+    img_url: faker.image.url()
+  },
+  {
+    post_id: 1,
+    user_id: 1,
+    location_id: 2,
+    title: '바다 여행',
+    img_url: faker.image.url()
+  },
+  {
+    post_id: 1,
+    user_id: 1,
+    location_id: 2,
+    title: '바다 여행',
+    img_url: faker.image.url()
+  },
+  {
+    post_id: 1,
+    user_id: 1,
+    location_id: 2,
+    title: '바다 여행',
+    img_url: faker.image.url()
+  },
+  {
+    post_id: 1,
+    user_id: 1,
+    location_id: 2,
+    title: '바다 여행',
+    img_url: faker.image.url()
+  },
+  {
+    post_id: 1,
+    user_id: 1,
+    location_id: 2,
+    title: '바다 여행',
+    img_url: faker.image.url()
+  },
+]
