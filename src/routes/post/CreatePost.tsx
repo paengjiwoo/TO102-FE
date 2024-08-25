@@ -163,7 +163,7 @@ const CreatePost: React.FC = () => {
             <span>
               {location?.province && location?.city
                 ? `${location.province}, ${location.city}`
-                : "위치를 확인 중입니다..."}
+                : "위치를 확인해주세요."}
             </span>
             <button
               type="button"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Navigate } from "@tanstack/react-router";
 import "../../styles/mypage/MyFriends.scss";
 
 interface User {
@@ -59,6 +59,9 @@ const MyFriends: React.FC = () => {
               src={friend.user.profile_picture_url}
               alt={friend.user.username}
               className="friend-avatar"
+              onClick={() =>
+                Navigate({ to: `/profile/${friend.user.username}` })
+              }
             />
             <span className="friend-name">{friend.user.username}</span>
             <button
