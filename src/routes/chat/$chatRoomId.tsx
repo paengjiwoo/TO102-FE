@@ -7,7 +7,7 @@ import { BsThreeDots } from 'react-icons/bs';
 import '../../styles/chat/chat.scss';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 
-import { Timestamp, addDoc, collection, getFirestore, limit, orderBy, query } from 'firebase/firestore';
+import { Timestamp, addDoc, collection, doc, getFirestore, limit, orderBy, query, updateDoc } from 'firebase/firestore';
 import { app } from '../../firebaseConfig';
 import { useFirestoreQuery } from '../../hooks/useFirestoreQuery';
 
@@ -33,6 +33,13 @@ const Chat: React.FC = () => {
         sender_id: user.id
       }
       addDoc(collection(db, `chatRooms/${chatRoomId}/messages`), docData);
+      
+      const updateData = {
+        last_message: trimmedMessage, 
+        last_message_at: Timestamp.fromDate(new Date())
+      };
+      updateDoc(doc(db, "chatRooms", `${chatRoomId}`), updateData)
+
       inputValue.current.value = "";
       console.log('완료!')
     }

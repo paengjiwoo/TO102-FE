@@ -10,6 +10,7 @@ import arrowLeft from "../../assets/icons/arrowLeft.svg";
 import profilepicture from "../../assets/icons/profilepicture.svg";
 import locationImg from "../../assets/icons/locationImg.svg";
 import { PostResponse } from "../../apis/posts";
+import { CreateChatroom } from "../../utils/CreateChatroom";
 
 const PostDetail: React.FC = () => {
   const navigate = useNavigate();
@@ -64,8 +65,9 @@ const PostDetail: React.FC = () => {
     alert("이 게시글이 신고되었습니다.");
   };
 
-  const handleChat = () => {
-    navigate({ to: "/chat" });
+  const handleChat = async () => {
+    const { len } =  await CreateChatroom(post.postId);
+    await navigate({ to: `/chat/${len}`})
   };
 
   const formatTimeAgo = (dateString: string) => {
