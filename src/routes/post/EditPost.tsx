@@ -1,40 +1,47 @@
-import React, { useState } from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import React, { useState, useEffect } from "react";
+import {
+  createFileRoute,
+  useNavigate,
+  useParams,
+} from "@tanstack/react-router";
 import "../../styles/CreatePost.scss";
 import useCurrentLocation from "../../hooks/useCurrentLocation";
 import pictureImg from "../../assets/icons/pictureImg.svg";
 import tagImg from "../../assets/icons/tagImg.svg";
-import { createPost } from "../../apis/posts";
-
-// 게시글 데이터를 정의하는 타입
-interface PostData {
-  title: string;
-  meetingDate: string;
-  content: string;
-  postTags: string[];
-  province: string;
-  city: string;
-  thumbnail: string; // API에서 string 타입만을 기대하므로 수정
-  status: string;
-}
+import { fetchPostById, updatePost, PostResponse } from "../../apis/posts";
 
 const categories = ["동행", "맛집", "가이드"] as const;
-
 type Category = (typeof categories)[number];
 
-const CreatePost: React.FC = () => {
+const EditPost: React.FC = () => {
+  const params = useParams({
+    from: "/post/EditPost", // 현재 경로를 지정
+    select: (params) => ({ id: params.id }), // id를 선택
+  });
+  const id = params.id;
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [meetingDate, setMeetingDate] = useState("");
+  const [date, setDate] = useState("");
   const [content, setContent] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
-  const [images, setImages] = useState<File[]>([]);
+  const [images, setImages] = useState<(File | string)[]>([]);
   const [isTagSheetOpen, setIsTagSheetOpen] = useState(false);
-  const [location, setLocation] = useState<{
-    province: string;
-    city: string;
-  } | null>(null);
-  const currentLocation = useCurrentLocation(); // Hook을 컴포넌트 최상위에서 호출
-  const navigate = useNavigate();
+  const location = useCurrentLocation();
+
+  useEffect(() => {
+    if (id) {
+      fetchPostById(id).then((response) => {
+        const data: PostResponse = response.data;
+        setTitle(data.title);
+        setDate(data.meetingDate || "");
+        setContent(data.content || "");
+        setSelectedCategories(data.postTags as Category[]);
+        if (data.thumbnail) {
+          setImages([data.thumbnail]);
+        }
+      });
+    }
+  }, [id]);
 
   const handleCategoryToggle = (category: Category) => {
     setSelectedCategories((prev) =>
@@ -47,37 +54,27 @@ const CreatePost: React.FC = () => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const fileArray = Array.from(e.target.files);
-      setImages((prevImages) => [...prevImages, ...fileArray].slice(0, 10));
+      setImages(
+        (prevImages) =>
+          [...prevImages, ...fileArray].slice(0, 10) as (File | string)[]
+      );
     }
-  };
-
-  const handleLocationCheck = () => {
-    setLocation(currentLocation);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const confirmed = window.confirm("작성 완료하겠습니까?");
-    if (confirmed && location) {
-      const postData: PostData = {
+    const confirmed = window.confirm("수정 완료하겠습니까?");
+    if (confirmed && id) {
+      const postData = {
         title,
-        meetingDate,
         content,
         postTags: selectedCategories,
-        province: location.province,
-        city: location.city,
-        thumbnail: images.length > 0 ? URL.createObjectURL(images[0]) : "", // 빈 문자열로 설정
-        status: "진행중",
+        thumbnail: images[0] as string,
       };
 
-      try {
-        const response = await createPost(postData);
-        const id = response.data.postId;
-        navigate({ to: `/post/PostDetail/${id}` });
-      } catch (error) {
-        console.error("게시글 작성 중 오류가 발생했습니다.", error);
-      }
+      await updatePost(Number(id), postData);
+      navigate({ to: `/post/${id}` });
     }
   };
 
@@ -86,12 +83,12 @@ const CreatePost: React.FC = () => {
   };
 
   return (
-    <div className="create-post-container">
+    <div className="edit-post-container">
       <div className="header">
         <button className="close-button" onClick={handleClose}>
           &times;
         </button>
-        <h2>토백이 글쓰기</h2>
+        <h2>게시글 수정</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -140,9 +137,10 @@ const CreatePost: React.FC = () => {
           <input
             type="date"
             id="date"
-            value={meetingDate}
-            onChange={(e) => setMeetingDate(e.target.value)}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             required
+            disabled
           />
         </div>
 
@@ -162,21 +160,17 @@ const CreatePost: React.FC = () => {
           <div className="location-input">
             <span>
               {location?.province && location?.city
-                ? `${location.province}, ${location.city}`
+                ? `${location.province} ${location.city}`
                 : "위치를 확인 중입니다..."}
             </span>
-            <button
-              type="button"
-              className="location-check-button"
-              onClick={handleLocationCheck}
-            >
+            <button type="button" className="location-check-button">
               현재 위치 확인
             </button>
           </div>
         </div>
 
         <button type="submit" className="submit-button">
-          게시글 작성
+          수정 완료
         </button>
       </form>
 
@@ -206,8 +200,8 @@ const CreatePost: React.FC = () => {
   );
 };
 
-export default CreatePost;
+export default EditPost;
 
-export const Route = createFileRoute("/post/CreatePost")({
-  component: CreatePost,
+export const Route = createFileRoute("/post/EditPost")({
+  component: EditPost,
 });
