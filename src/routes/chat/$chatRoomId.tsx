@@ -1,5 +1,5 @@
-import { createFileRoute, useMatch } from '@tanstack/react-router'
-import { useEffect, useState } from 'react';
+import { Link, createFileRoute, useMatch } from '@tanstack/react-router'
+import { useEffect, useRef, useState } from 'react';
 import { IoChevronForwardSharp, IoPersonAdd, IoStar } from 'react-icons/io5';
 import io from "socket.io-client";
 import { useProfileData } from '../../hooks/useProfileData';
@@ -21,6 +21,7 @@ const Chat: React.FC = () => {
   const sendMessage = () => {
     socket.emit("send_message", { message: `${inputValue}` });
     setMessages(prev => [...prev, { text: inputValue, type: 'send' }]);
+    seInputValue('');
     console.log(inputValue);
   };
 
@@ -40,6 +41,14 @@ const Chat: React.FC = () => {
     };
   }, []);
 
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  useEffect(scrollToBottom, [messages]);
+
   return (
     <div className="chatcontainer">
       <div className="fixednav">
@@ -47,7 +56,7 @@ const Chat: React.FC = () => {
 
           {/* 사용자 정보 영역 */}
           <div className="chatnav__left">
-            <IoChevronForwardSharp className="chatnav__left__back"/>
+            <Link to="/rooms"><IoChevronForwardSharp className="chatnav__left__back"/></Link>
 
             <div>
               <div className="chatnav__left__user">
@@ -91,9 +100,15 @@ const Chat: React.FC = () => {
         
         {messages.map(message => 
           message.type === 'receive' ? (
+            <>
             <div className="bubbles__received">{message.text}</div>
+            <div ref={messagesEndRef} />
+            </>
           ) : (
+            <>
             <div className="bubbles__send">{message.text}</div>
+            <div ref={messagesEndRef} />
+            </>
           )
         )}
       </div>
@@ -104,6 +119,7 @@ const Chat: React.FC = () => {
           <input
             className="chatinput__input" 
             type="text" 
+            value={inputValue}
             placeholder="message,,," 
             onChange={(e) => seInputValue(e.target.value)}
           />

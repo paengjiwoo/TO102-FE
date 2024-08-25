@@ -1,14 +1,19 @@
 .chatcontainer {
-  padding: 25px 0 25px 0;
+  padding: 135px 0 25px 0;
+
 }
 
 .fixednav {
   background-color: white;
+  width: 340px;
+  position: fixed;
+  top: 0;
 }
 
 .chatnav {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
   margin-bottom: 10px;
 
   &__left {
@@ -121,7 +126,7 @@
 }
 
 .bubbles {
-  padding: 15px 0 30px 0;
+  padding: 30px 0 30px 0;
   font-size: 15px;
   line-height: 20px;
   display: flex;
@@ -153,11 +158,14 @@
 .inputbox {
   position: absolute;
   width: 340px;
-  bottom: 20px;
+  bottom: 0;
+  height: 50px;
+  background-color: white;
 }
 
 .chatinput {
    position: relative;
+   width: 340px;
 
    &__input {
      border: none;
