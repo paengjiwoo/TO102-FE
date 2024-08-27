@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import "../../styles/CreatePost.scss";
+import "../../styles/post/CreatePost.scss";
 import useCurrentLocation from "../../hooks/useCurrentLocation";
 import pictureImg from "../../assets/icons/pictureImg.svg";
 import tagImg from "../../assets/icons/tagImg.svg";
@@ -163,7 +163,7 @@ const CreatePost: React.FC = () => {
             <span>
               {location?.province && location?.city
                 ? `${location.province}, ${location.city}`
-                : "위치를 확인 중입니다..."}
+                : "위치를 확인해주세요."}
             </span>
             <button
               type="button"

@@ -1,5 +1,6 @@
 .my-posts-container {
-  width: 700px; /* 고정된 너비 */
+  width: 100%; /* 고정된 너비 */
+  max-width: 390px;
   height: auto; /* 고정된 높이 */
   margin: 0 auto; /* 화면 가운데 정렬 */
   display: flex;

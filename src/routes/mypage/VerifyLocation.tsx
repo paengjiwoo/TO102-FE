@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../../styles/VerifyLocation.scss";
+import "../../styles/mypage/VerifyLocation.scss";
 import arrowLeft from "../../assets/icons/arrowLeft.svg";
 
 const VerifyLocation: React.FC = () => {
@@ -21,6 +21,12 @@ const VerifyLocation: React.FC = () => {
 
       if (kakao && kakao.maps) {
         kakao.maps.load(() => {
+          const container = document.getElementById("map");
+          if (!container) {
+            console.error("Map container not found");
+            return;
+          }
+
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
               (position) => {
@@ -28,12 +34,11 @@ const VerifyLocation: React.FC = () => {
                 setLatitude(latitude);
                 setLongitude(longitude);
 
-                const container = document.getElementById("map");
                 const options = {
                   center: new kakao.maps.LatLng(latitude, longitude),
                   level: 3,
                 };
-                const map = new kakao.maps.Map(container!, options);
+                const map = new kakao.maps.Map(container, options);
 
                 const mapTypeControl = new kakao.maps.MapTypeControl();
                 map.addControl(
@@ -62,7 +67,6 @@ const VerifyLocation: React.FC = () => {
       }
     };
 
-    // 로그인된 사용자의 정보를 가져옵니다.
     axios
       .get("/locations/:{id}")
       .then((response) => {
@@ -80,7 +84,6 @@ const VerifyLocation: React.FC = () => {
   const handleConfirmLocation = async () => {
     if (latitude && longitude && username) {
       try {
-        // Google Geocoding API를 사용하여 province와 city를 가져옵니다.
         const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
         const response = await axios.get(
           `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_API_KEY}`
@@ -103,7 +106,6 @@ const VerifyLocation: React.FC = () => {
             }
           }
 
-          // 위치 정보를 서버에 저장합니다.
           await axios.post("/locations/save", {
             username,
             province,
@@ -128,7 +130,7 @@ const VerifyLocation: React.FC = () => {
     <div className="verify-location-container">
       <div className="header">
         <button className="back-button" onClick={() => window.history.back()}>
-          <img src={arrowLeft} />
+          <img src={arrowLeft} alt="Back" />
         </button>
         <h2>현재 위치를 확인해주세요.</h2>
       </div>

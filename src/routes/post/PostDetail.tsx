@@ -3,7 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../../styles/PostDetail.scss";
+import "../../styles/post/PostDetail.scss";
 import image1 from "../../assets/icons/image1.svg";
 import image2 from "../../assets/icons/image2.svg";
 import arrowLeft from "../../assets/icons/arrowLeft.svg";
@@ -68,7 +68,7 @@ const PostDetail: React.FC = () => {
   const handleChat = async () => {
     const { len } =  await CreateChatroom(post.postId);
     await navigate({ to: `/chat/${len}`})
-  };
+  }
 
   const formatTimeAgo = (dateString: string) => {
     const date = new Date(dateString);
@@ -131,7 +131,7 @@ const PostDetail: React.FC = () => {
       </div>
       <div className="post-author">
         <img
-          src={profilepicture} // Replace with post.authorImage if available
+          src={profilepicture}
           alt="profile"
           className="profile-img"
           onClick={() => navigate({ to: `/profile/${post.userId}` })}

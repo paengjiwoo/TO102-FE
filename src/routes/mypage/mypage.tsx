@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import React, { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import UserInfoBox from "../../components/profile/UserInfoBox";
-import "../../styles/Mypage.scss";
+import "../../styles/mypage/Mypage.scss";
 import MyPosts from "./myposts";
 import MyFriends from "./myfriends";
 import NotificationSettings from "./NotificationSettings"; // 추가된 컴포넌트

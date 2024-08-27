@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import "../../styles/MyPosts.scss";
+import "../../styles/mypage/MyPosts.scss";
 import { PostResponse, fetchAllPosts } from "../../apis/posts";
 import image1 from "../../assets/icons/image1.svg"; // Basic image
 import Vertor from "../../assets/icons/Vertor.svg"; // More options icon
