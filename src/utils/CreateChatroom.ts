@@ -17,7 +17,8 @@ export const CreateChatroom = async (postId: number) => {
       created_at: Timestamp.fromDate(new Date()),
       last_message: "",
       last_messaged_at: Timestamp.fromDate(new Date()),
-      closed_at: false
+      closed_at: false,
+      accepted: false
     };
 
     const docRef = doc(db, 'chatRooms', `${len}`);

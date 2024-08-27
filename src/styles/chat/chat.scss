@@ -153,6 +153,84 @@
     margin-bottom: 10px;
     color: white;
   }
+
+  &__participate {
+    &__main {
+      display: flex;
+      gap: 5px;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 5px 0 10px 0;
+    }
+
+    &__right {
+      padding: 10px 15px;
+      max-width: 75%;
+      align-self: flex-end;
+      display: flex; 
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      border-right: 3px solid rgba(104, 146, 122, 1);
+      background-color: rgba(201, 201, 201, 0.1);
+      border-radius: 0.3rem;
+    }
+
+    &__left {
+      padding: 10px 15px;
+      max-width: 75%;
+      align-self: flex-start;
+    }
+  
+    &__text {
+      font-weight: 500;
+    }
+
+    &__title {
+      padding: 7px;
+      background-color: rgba(201, 201, 201, 0.3);
+      border-radius: 0.5rem;
+      font-weight: 700;
+      margin: 6px 0;
+    }
+
+    &__admitq {
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    &__ban {
+      display: flex;
+      margin-top: 3px;
+      font-size: 11px;
+
+      &__icon {
+        color: red;
+        margin: 4px 5px 0 0;
+      }
+
+      &__text {
+        color: rgba(122, 122, 122, 1);
+      }
+    }
+
+    &__button {
+      margin-top: 5px;
+      border: 2px solid rgba(104, 146, 122, 1);
+      background-color: transparent;
+      border-radius: 0.7rem;
+      cursor: pointer;
+      color: rgba(104, 146, 122, 1);
+      font-weight: 700;
+      padding: 5px 10px;
+    
+      &__noti {
+        color: rgba(122, 122, 122, 1);
+        font-size: 10px;
+        margin-left: 5px;
+        padding-top: 15px;
+      }
+    }
+  }
 }
 
 .inputbox {

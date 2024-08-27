@@ -1,18 +1,31 @@
 import { Link, createFileRoute, useMatch } from '@tanstack/react-router'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IoChevronForwardSharp, IoPersonAdd, IoStar } from 'react-icons/io5';
 import { useProfileData } from '../../hooks/useProfileData';
 import Location from '../../components/common/Location';
 import { BsThreeDots } from 'react-icons/bs';
 import '../../styles/chat/chat.scss';
-import { FaArrowAltCircleUp } from 'react-icons/fa';
+import { FaArrowAltCircleUp, FaBan } from 'react-icons/fa';
 
 import { Timestamp, addDoc, collection, doc, getFirestore, limit, orderBy, query, updateDoc } from 'firebase/firestore';
 import { app } from '../../firebaseConfig';
 import { useFirestoreQuery } from '../../hooks/useFirestoreQuery';
 
+interface ChatParams {
+  chatRoomId: string;
+}
+
+interface ChatSearchParams {
+  accepted: boolean;
+}
+
 const Chat: React.FC = () => {
-  const { params: { chatRoomId },} = useMatch({ from: '/chat/$chatRoomId' });
+  const match = useMatch({from: '/chat/$chatRoomId',});
+
+  const { chatRoomId } = match.params as ChatParams;
+  const { accepted } = match.search as ChatSearchParams;
+
+  const [acceptance, setAcceptance] = useState<boolean>(accepted);
 
   const db = getFirestore(app);
   const messagesRef = collection(db, `chatRooms/${chatRoomId}/messages`);
@@ -59,6 +72,32 @@ const Chat: React.FC = () => {
 
   useEffect(scrollToBottom, [messages]);
 
+  const handleParticipation = () => {
+    const docData = {
+      chat_id: messages.length + 1,
+      text: "",
+      created_at: Timestamp.fromDate(new Date()),
+      message_type: "participate",
+      sender_id: user.id
+    }
+    addDoc(collection(db, `chatRooms/${chatRoomId}/messages`), docData);
+
+    const updateData = {
+      last_message: "참여 요청", 
+      last_message_at: Timestamp.fromDate(new Date())
+    };
+    updateDoc(doc(db, "chatRooms", `${chatRoomId}`), updateData)
+  };
+
+  const handleAcceptance = () => {
+    const updateData = {
+      accepted: true,
+    };
+    updateDoc(doc(db, "chatRooms", `${chatRoomId}`), updateData)
+
+    setAcceptance(true);
+  }
+
   return (
     <div className="chatcontainer">
       <div className="fixednav">
@@ -100,7 +139,16 @@ const Chat: React.FC = () => {
               <div className="content__top__tag">#동행</div>
             </div>
             <div className="content__date">2024-09-10</div>
-            <button className="content__button">참여 신청</button>
+            {!acceptance ? (
+              <button className="content__button" onClick={handleParticipation}>
+                참여 신청
+              </button>
+            ): (
+              <button className="content__button" >
+                후기 작성
+              </button>
+            )
+            }
           </div>
         </div>
       </div>
@@ -120,12 +168,40 @@ const Chat: React.FC = () => {
             } else {
               return (
                 <>
-                <div key={idx} className="bubbles__send">{message.text}</div>
-                <div ref={messagesEndRef} />
+                  <div key={idx} className="bubbles__send">{message.text}</div>
+                  <div ref={messagesEndRef} />
                 </>
               )
             }
-          }    
+          } else if (message.message_type === "participate") {
+            return (
+              <>
+                <div key={idx} className="bubbles__participate__right">
+                  <div className="bubbles__participate__main">
+                    <div>🍀 참여 요청</div>
+                  </div>
+                  <div>
+                    <div className="bubbles__participate__text">{user.username} 님으로 부터 참여 요청이 전송되었습니다.</div>
+                    <div className="bubbles__participate__title">빠른 북한산 1박 2일 글램핑 🏞️</div>
+                    <div className="bubbles__participate__admitq">참여 신청을 수락하시겠습니까?</div>
+                  </div>
+                  
+                  {/* user.id 쪽은 추후 게시물 작성자 id 활용하도록 수정 예정 */}
+                  {user.id === message.sender_id ? (
+                    <div className="bubbles__participate__ban">
+                      <FaBan className="bubbles__participate__ban__icon"/>
+                      <div className="bubbles__participate__ban__text">수락하기 버튼은 토백이에게만 노출됩니다.</div>
+                    </div>
+                  ): ( <div style={{ display: "flex"}}>
+                      <button onClick={handleAcceptance} className="bubbles__participate__button">수락 하기</button>                   
+                      <div className="bubbles__participate__button__noti">버튼을 누르는 즉시 수락됩니다.</div>
+                    </div>
+                  )}
+                </div>
+                <div ref={messagesEndRef} />
+              </>
+            )
+          }  
         })}
       </div>
 
