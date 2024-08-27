@@ -16,7 +16,7 @@ type Category = (typeof categories)[number];
 const EditPost: React.FC = () => {
   const params = useParams({
     from: "/post/EditPost", // 현재 경로를 지정
-    select: (params) => ({ id: params.id }), // id를 선택
+    select: (params: any) => ({ id: params.id }), // id를 선택
   });
   const id = params.id;
   const navigate = useNavigate();
