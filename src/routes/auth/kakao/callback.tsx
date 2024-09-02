@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { handleKakaoCallback, getKakaoUserInfo } from "../../../apis/auth";
+import useUserStore from "../../../store/useUserStore";
 
 interface User {
   id: string;
@@ -10,9 +11,10 @@ interface User {
 }
 
 const Callback: React.FC = () => {
+  const { user, setUser } = useUserStore();
   const router = useRouter();
   const [message, setMessage] = useState<string>("로그인 처리 중...");
-  const [user, setUser] = useState<User | null>(null);
+  // const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -50,12 +52,16 @@ const Callback: React.FC = () => {
         router.navigate({ to: "/login" });
       }, 2000);
     }
+
+    setTimeout(() => {
+      router.navigate({ to: "/" });
+    }, 3000);
   }, [router]);
 
   return (
     <div>
       <p>{message}</p>
-      {user && (
+      {user.nickname && (
         <div>
           <h2>현재 사용자 정보</h2>
           <p>이름: {user.nickname}</p>
