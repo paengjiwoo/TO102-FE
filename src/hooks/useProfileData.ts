@@ -9,7 +9,6 @@ export const useProfileData = () => {
   user.email = faker.internet.email();
   user.location = '서울특별시 영등포구';
   user.profile_picture_url = faker.image.url()
-  user.average_rating = faker.datatype.float({ min: 0, max: 5, precision: 0.01 });
-
+  user.average_rating = Number(faker.datatype.float({ min: 0, max: 5, precision: 0.01 }).toFixed(2));
   return { user };
 }

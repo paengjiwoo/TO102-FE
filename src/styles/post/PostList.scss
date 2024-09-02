@@ -1,0 +1,194 @@
+.post-list-container {
+  width: 110%;
+  max-width: 400px; /* 전역 스타일에 맞게 max-width 설정 */
+  height: 100vh;
+  margin: 0 auto;
+  overflow-y: auto; /* 수직 스크롤만 활성화 */
+  overflow-x: hidden; /* 수평 스크롤 비활성화 */
+  background-color: #f9f9f9;
+  position: relative;
+  padding-bottom: 80px;
+
+  .location-header {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .location-img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .location-text {
+      font-weight: bold;
+    }
+  }
+
+  .category-select {
+    margin-bottom: 20px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    button {
+      padding: 5px 15px;
+      border: none;
+      background-color: #e0e0e0;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.selected {
+        background-color: #1da895;
+        color: white;
+      }
+
+      &:hover {
+        background-color: #c0c0c0;
+      }
+    }
+  }
+
+  .posts {
+    .post-card {
+      display: flex;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+      overflow: hidden;
+      width: 100%;
+
+      .post-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+      }
+
+      .post-location {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 5px;
+        display: flex;
+        text-align: center;
+
+        &::before {
+          content: url("/path/to/location-icon.svg");
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+
+      .post-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .post-category-date {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.85rem;
+          color: #666;
+
+          .post-category {
+            color: #1da895;
+            font-weight: bold;
+          }
+
+          .post-date {
+            color: #999;
+          }
+        }
+
+        .post-title-link {
+          text-decoration: none;
+          color: #333;
+
+          .post-title {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+          }
+        }
+
+        .post-author {
+          font-size: 0.85rem;
+          color: #555;
+          margin-bottom: 5px;
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+          }
+        }
+
+        .post-status {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 5px;
+
+          .status-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            cursor: pointer;
+
+            &.progress {
+              background-color: #4caf50;
+              color: white;
+            }
+
+            &.completed {
+              background-color: #ddd;
+              color: black;
+            }
+          }
+
+          .post-viewcount {
+            font-size: 0.85rem;
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+
+  .create-post-button {
+    position: fixed;
+    left: 66%;
+    transform: translateX(-50%);
+    bottom: 80px;
+    background-color: #147d70;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+
+    .plus-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

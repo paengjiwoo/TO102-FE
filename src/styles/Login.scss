@@ -1,59 +1,79 @@
+/* src/styles/Login.scss */
+
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #212121;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 20px;
 }
 
 .login-box {
-  background-color: #ffffff;
-  border-radius: 10px;
-  width: 300px;
-  padding: 40px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .login-title {
-  font-size: 24px;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+  color: #000000;
 }
 
 .login-subtitle {
-  font-size: 14px;
-  color: #007bff;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  color: #4f6d6b; /* 다크 그린 색상 */
+  margin-bottom: 2rem;
 }
 
 .login-image {
-  width: 100%;
-  height: auto;
-  margin-bottom: 30px;
+  width: 200px; /* 원하는 이미지 크기로 조정 */
+  margin-bottom: 2rem;
 }
 
 .kakao-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffeb00;
+  background-color: #fee500; /* 카카오 노란색 */
+  color: #3c1e1e; /* 다크 브라운 텍스트 */
   border: none;
-  border-radius: 8px;
-  padding: 12px 0;
-  width: 100%;
-  font-size: 16px;
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-size: 1rem;
   font-weight: bold;
-  color: #000;
   cursor: pointer;
-
-  &:hover {
-    background-color: #f7df00;
-  }
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto; /* 위아래 여백을 추가하여 중앙 정렬 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   img {
-    margin-right: 8px;
-    width: 24px;
+    margin-right: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+    width: 24px; /* 아이콘 크기 */
     height: 24px;
+  }
+
+  &:hover {
+    background-color: #ffd800; /* 약간 더 진한 노란색으로 변경 */
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.loading {
+    background-color: #ddd; /* 로그인 중일 때 배경색 */
+    color: #555; /* 로그인 중일 때 텍스트 색상 */
+  }
+
+  .kakao-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #3c1e1e; /* 텍스트 색상 */
   }
 }

@@ -4,6 +4,6 @@ import { BASE_URL } from "./BASE_URL";
 export const apiRequester: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    "Content-Type": "application/json",
+  },
 });

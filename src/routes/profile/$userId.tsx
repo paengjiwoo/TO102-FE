@@ -1,30 +1,50 @@
 import React from "react";
-import {  createFileRoute } from "@tanstack/react-router";
-import { useProfileData } from "../../hooks/profileHook";
+import {  Link, createFileRoute } from "@tanstack/react-router";
+import { useProfileData } from "../../hooks/useProfileData";
 import UserInfoBox from "../../components/profile/UserInfoBox";
-import { IoStar } from "react-icons/io5";
+import { IoChevronForwardSharp, IoStar } from "react-icons/io5";
+import '../../styles/profile/profile.scss'
+import ReviewFeed from "../../components/review/ReviewFeed";
+import Header from "../../components/common/Header";
+import { useReviews } from "../../hooks/useReviews";
+import { sortDatesDescending } from "../../utils/sort";
 
 const Profile: React.FC = () => {
   // const { params: { userId },} = useMatch({ from: '/profile/$userId' });
-
+  const { reviews } = useReviews();
   const { user } = useProfileData(); 
 
   return (
-    <div>
-      <UserInfoBox user={user}/>
+    <>
+      <Header />
+      <div className="profile">
+        <div className="profile__userinfo">
+          <UserInfoBox user={user}/>
+        </div>
 
-      <div>
-        <div>
-          <IoStar />
-          <div>{user.average_rating}</div>
+        <div className="info">
+          <div className="info__stars">
+            <IoStar className="info__stars__star"/>
+            <div className="info__stars__rate">{user.average_rating}</div>
+          </div>
+
+          <div className="info__reviews">
+            {reviews.length} reviews
+          </div>
+        </div>
+
+        <div className="reviews">
+          <div className="reviews__title">받은 후기</div>
+          <Link to="/reviews" >
+            <IoChevronForwardSharp />
+          </Link>
+        </div>
+
+        <div className="feed">
+          <ReviewFeed type="received" reviews={sortDatesDescending(reviews)}/>
         </div>
       </div>
-
-      <div>
-        <div>받은 후기</div>
-        
-      </div>
-    </div>
+    </>
   );
 };
 
