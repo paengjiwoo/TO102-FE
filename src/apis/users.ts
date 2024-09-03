@@ -2,17 +2,17 @@ import { TUserPayload } from "../models/user.model";
 import { apiRequester } from "./apiRequester";
 
 // URL 생성 함수를 간단히 화살표 함수로 변경
-const usersUrl = (id: number) => `users/${id}`;
+const usersUrl = (id: string) => `users/${id}`;
 
-export const getUser = (userId: number) => {
+export const getUser = (userId: string) => {
   return apiRequester.get(usersUrl(userId));
 };
 
-export const updateUser = (userId: number, payload: TUserPayload) => {
+export const updateUser = (userId: string, payload: TUserPayload) => {
   return apiRequester.put(usersUrl(userId), payload);
 };
 
-export const getUserPosts = (userId: number) => {
+export const getUserPosts = (userId: string) => {
   return apiRequester.get(`${usersUrl(userId)}/posts`);
 };
 export interface VerifyLocationPayload {
@@ -21,7 +21,7 @@ export interface VerifyLocationPayload {
 }
 
 export const verifyUserLocation = (
-  userId: number,
+  userId: string,
   payload: VerifyLocationPayload
 ) => {
   return apiRequester.post(`${usersUrl(userId)}/verify-location`, payload);

@@ -54,7 +54,7 @@ const Callback: React.FC = () => {
     }
 
     setTimeout(() => {
-      router.navigate({ to: "/" });
+      // router.navigate({ to: "/" });
     }, 3000);
   }, [router]);
 

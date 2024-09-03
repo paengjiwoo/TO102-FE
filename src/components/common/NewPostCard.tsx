@@ -5,6 +5,8 @@ import Location from './Location';
 const NewPostCard = ({item}: any) => {
   const { user } = useProfileData();
 
+  console.log(user);
+
   return(
     <div className="card">
       <img className="card__postimg" src={item.img_url} alt="" />
