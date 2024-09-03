@@ -4,8 +4,8 @@ export type TUser  = {
   nickname: string;
   email: string;
   location: string;
-  profile_picture_url: string;
-  average_rating: number;
+  profilePictureUrl: string;
+  locationId: number;
 };
 
 export type TUserPayload = Omit<TUser, 'id'>;

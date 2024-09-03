@@ -31,7 +31,7 @@ const TabBar: React.FC = () => {
     {
       label: "내 정보",
       path: "/profile/$userId",
-      params: { userId: "123" },
+      params: { userId: "1" },
       src: IoPersonCircleOutline,
       id: "profile",
     },

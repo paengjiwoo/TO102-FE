@@ -8,6 +8,10 @@ export const getUser = (userId: string) => {
   return apiRequester.get(usersUrl(userId));
 };
 
+export const getUserRating = (userId: string) => {
+  return apiRequester.get(`${usersUrl(userId)}/rating`);
+}
+
 export const updateUser = (userId: string, payload: TUserPayload) => {
   return apiRequester.put(usersUrl(userId), payload);
 };

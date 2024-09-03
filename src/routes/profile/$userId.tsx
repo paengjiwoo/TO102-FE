@@ -1,6 +1,5 @@
-import React from "react";
-import {  Link, createFileRoute } from "@tanstack/react-router";
-import { useProfileData } from "../../hooks/useProfileData";
+import React, { useEffect, useState } from "react";
+import {  Link, createFileRoute, useMatch } from "@tanstack/react-router";
 import UserInfoBox from "../../components/profile/UserInfoBox";
 import { IoChevronForwardSharp, IoStar } from "react-icons/io5";
 import '../../styles/profile/profile.scss'
@@ -8,11 +7,24 @@ import ReviewFeed from "../../components/review/ReviewFeed";
 import Header from "../../components/common/Header";
 import { useReviews } from "../../hooks/useReviews";
 import { sortDatesDescending } from "../../utils/sort";
+import { getUser, getUserRating } from "../../apis/users";
 
 const Profile: React.FC = () => {
-  // const { params: { userId },} = useMatch({ from: '/profile/$userId' });
+  const { params: { userId },} = useMatch({ from: '/profile/$userId' });
   const { reviews } = useReviews();
-  const { user } = useProfileData(); 
+
+  const [user, setUser] = useState<any>([]);
+  const [rating, setRating] = useState<any>('');
+  
+  useEffect(() => {
+    getUser(userId).then(res => { setUser(res.data); console.log(res.data) })
+    getUserRating(userId)
+    .then(res => console.log(res.data))
+    .catch(() => { 
+      console.log(`user_id ${userId}님에 대한 평점이 존재하지 않습니다.`);
+      setRating('평가 0건')
+    });
+  }, [])
 
   return (
     <>
@@ -24,8 +36,16 @@ const Profile: React.FC = () => {
 
         <div className="info">
           <div className="info__stars">
-            <IoStar className="info__stars__star"/>
-            <div className="info__stars__rate">{user.average_rating}</div>
+            {rating.length > 4 ? (
+              <div className="info__stars__message">
+                {rating}
+              </div>
+            ) : (
+              <>
+                <IoStar className="info__stars__star"/>
+                <div className="info__stars__rate">{rating}</div>
+              </>
+            )}
           </div>
 
           <div className="info__reviews">

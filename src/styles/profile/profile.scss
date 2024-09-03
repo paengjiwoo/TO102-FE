@@ -16,6 +16,12 @@
     justify-content: space-between;
     width: 50px;
 
+    &__message {
+      color: rgba(160, 156, 171, 1);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
     &__star {
       color: rgba(20, 125, 112, 1);
     }
