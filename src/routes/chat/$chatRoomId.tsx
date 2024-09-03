@@ -12,6 +12,7 @@ import { useFirestoreQuery } from '../../hooks/useFirestoreQuery';
 import { Sheet } from 'react-modal-sheet';
 import useUserStore from '../../store/useUserStore';
 import { fakerKO as faker } from "@faker-js/faker";
+import { acceptParticipate, addParticipate } from '../../apis/participate';
 
 interface ChatParams {
   chatRoomId: string;
@@ -58,12 +59,6 @@ const Chat: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    if (chatRoomId) {
-      console.log(`Joined room: ${chatRoomId}`);
-    }
-  }, []);
-
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToBottom = () => {
@@ -72,7 +67,11 @@ const Chat: React.FC = () => {
 
   useEffect(scrollToBottom, [messages]);
 
-  const handleParticipation = () => {
+  const handleParticipation = async () => {
+    let requestId;
+    const payload = { postId: Number(room[0].post_id), requesterId: Number(room[0].visitor_id)};
+    await addParticipate(payload).then(res => requestId = res.data.requestId)
+
     const docData = {
       chat_id: messages.length + 1,
       text: "",
@@ -80,13 +79,14 @@ const Chat: React.FC = () => {
       message_type: "participate",
       sender_id: user.id
     }
-    addDoc(collection(db, `chatRooms/${chatRoomId}/messages`), docData);
+    await addDoc(collection(db, `chatRooms/${chatRoomId}/messages`), docData);
 
     const updateData = {
       last_message: "참여 요청", 
-      last_message_at: Timestamp.fromDate(new Date())
+      last_message_at: Timestamp.fromDate(new Date()),
+      participate_request_id: requestId
     };
-    updateDoc(doc(db, "chatRooms", `${chatRoomId}`), updateData)
+    await updateDoc(doc(db, "chatRooms", `${chatRoomId}`), updateData)
   };
 
   const handleAcceptance = () => {
@@ -94,6 +94,8 @@ const Chat: React.FC = () => {
       accepted: true,
     };
     updateDoc(doc(db, "chatRooms", `${chatRoomId}`), updateData)
+
+    acceptParticipate(room[0].participate_request_id);
   }
 
   return (
@@ -187,14 +189,19 @@ const Chat: React.FC = () => {
                   </div>
                   
                   {/* user.id 쪽은 추후 게시물 작성자 id 활용하도록 수정 예정 */}
-                  {room.tobaek_id !== message.sender_id ? (
+                  {!room[0].accepted && (room.tobaek_id === message.sender_id ? (
                     <div className="bubbles__participate__ban">
                       <FaBan className="bubbles__participate__ban__icon"/>
-                      <div className="bubbles__participate__ban__text">수락하기 버튼은 토백이에게만 노출됩니다.</div>
+                      <div className="bubbles__participate__ban__text">요청 전송되었습니다.<br />수락하기 버튼은 토백이에게만 노출됩니다.</div>
                     </div>
                   ): ( <div style={{ display: "flex"}}>
                       <button onClick={handleAcceptance} className="bubbles__participate__button">수락 하기</button>                   
                       <div className="bubbles__participate__button__noti">버튼을 누르는 즉시 수락됩니다.</div>
+                    </div>
+                  ))}
+                  {room[0].accepted && (
+                    <div style={{ display: "flex", marginTop: '10px'}}>
+                      <div className="bubbles__participate__ban__text">🎉 수락 완료 되었습니다</div>
                     </div>
                   )}
                 </div>

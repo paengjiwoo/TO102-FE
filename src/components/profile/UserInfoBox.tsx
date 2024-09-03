@@ -10,7 +10,7 @@ const UserInfoBox = ({user}: any) => {
   useEffect(() => {
     getLocation(user.locationId)
     .then(res => setLocation(`${res.data.province} ${res.data.city}`))
-  }, []);
+  }, [user]);
 
   return(
     <div className="userBox">

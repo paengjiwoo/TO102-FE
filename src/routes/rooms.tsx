@@ -32,7 +32,7 @@ const ChatRoomsComponent: React.FC = () => {
 
   useEffect(() => {
     handleRooms();
-  }, [data || chatType])
+  }, [data, chatType])
   
   const tabTypes = [
     ["visitor", "native"],

@@ -5,16 +5,16 @@ import { IoChevronForwardSharp, IoStar } from "react-icons/io5";
 import '../../styles/profile/profile.scss'
 import ReviewFeed from "../../components/review/ReviewFeed";
 import Header from "../../components/common/Header";
-import { useReviews } from "../../hooks/useReviews";
 import { sortDatesDescending } from "../../utils/sort";
 import { getUser, getUserRating } from "../../apis/users";
+import { getRecivedReviews } from "../../apis/reviews";
 
 const Profile: React.FC = () => {
   const { params: { userId },} = useMatch({ from: '/profile/$userId' });
-  const { reviews } = useReviews();
 
   const [user, setUser] = useState<any>([]);
   const [rating, setRating] = useState<any>('');
+  const [reviews, setReviews] = useState<any>([]);
   
   useEffect(() => {
     getUser(userId).then(res => { setUser(res.data); console.log(res.data) })
@@ -24,6 +24,10 @@ const Profile: React.FC = () => {
       console.log(`user_id ${userId}님에 대한 평점이 존재하지 않습니다.`);
       setRating('평가 0건')
     });
+
+    getRecivedReviews(userId)
+    .then(res => {setReviews(res.data)})
+    .catch((_) => console.log('해당 사용자의 리뷰가 없습니다.'))
   }, [])
 
   return (
@@ -61,7 +65,11 @@ const Profile: React.FC = () => {
         </div>
 
         <div className="feed">
-          <ReviewFeed type="received" reviews={sortDatesDescending(reviews)}/>
+          {reviews.length > 0 ? (
+            <ReviewFeed type="received" reviews={sortDatesDescending(reviews)}/>
+          ) : (
+            <div>받은 후기가 없습니다.</div>
+          )}
         </div>
       </div>
     </>

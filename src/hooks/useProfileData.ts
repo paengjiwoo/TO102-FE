@@ -3,7 +3,7 @@ import { getUser } from "../apis/users";
 import { fakerKO as faker } from "@faker-js/faker";
 
 export const useProfileData =  (userId?: string) => {
-  const user = {id: 1, username: '', nickname: '', email: '', location: '', profile_picture_url: '', average_rating: 0};
+  const user = {id: '1', username: '', nickname: '', email: '', location: '', profile_picture_url: '', average_rating: 0};
 
   if (userId && Number(userId) > 0) {
     getUser(userId).then(res => res.data).then(res => {
