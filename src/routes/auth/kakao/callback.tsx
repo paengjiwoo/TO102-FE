@@ -3,13 +3,6 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { handleKakaoCallback, getKakaoUserInfo } from "../../../apis/auth";
 import useUserStore from "../../../store/useUserStore";
 
-interface User {
-  id: string;
-  nickname: string;
-  email?: string;
-  profile_image?: string;
-}
-
 const Callback: React.FC = () => {
   const { user, setUser } = useUserStore();
   const router = useRouter();

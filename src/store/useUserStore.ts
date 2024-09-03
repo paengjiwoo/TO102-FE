@@ -1,16 +1,8 @@
 import create from 'zustand';
 
-type TUser = {
-  id: string;
-  nickname: string;
-  email?: string;
-  profile_image?: string;
-  location: string;
-}
-
 interface IUserStore {
-  user: TUser;
-  setUser: (userData: TUser) => void;
+  user: any;
+  setUser: (userData: any) => void;
   clearUser: () => void;
 }
 
@@ -22,7 +14,7 @@ const useUserStore = create<IUserStore>((set) => ({
     profile_image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ86TTBL73hNgcKUa_zEJOO_i232oUYg5NKAA&s',
     location: '16'
   },
-  setUser: (userData:  TUser) => set({ user: { ...userData } }),
+  setUser: (userData: any) => set({ user: { ...userData } }),
   clearUser: () => set({ user: { id: '', nickname: '', email: '', profile_image: '', location: '' } })
 }));
 

@@ -181,7 +181,7 @@ const Chat: React.FC = () => {
                     <div>🍀 참여 요청</div>
                   </div>
                   <div>
-                    <div className="bubbles__participate__text">{user.username} 님으로 부터 참여 요청이 전송되었습니다.</div>
+                    <div className="bubbles__participate__text">{user.nickname} 님으로 부터 참여 요청이 전송되었습니다.</div>
                     <div className="bubbles__participate__title">빠른 북한산 1박 2일 글램핑 🏞️</div>
                     <div className="bubbles__participate__admitq">참여 신청을 수락하시겠습니까?</div>
                   </div>
